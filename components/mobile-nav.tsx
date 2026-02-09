@@ -38,7 +38,7 @@ export function MobileNav() {
         <ScrollArea className="h-[calc(100vh-80px)]">
           <div className="flex flex-col gap-2 p-4">
             <Link
-              href="#"
+              href="/"
               onClick={() => setOpen(false)}
               className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
             >
@@ -51,10 +51,10 @@ export function MobileNav() {
                   About
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  <MobileLink href="#" setOpen={setOpen}>About Us</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Philosophy</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Founders & Specialists</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Our Advisors</MobileLink>
+                  <MobileLink href="/about-us" setOpen={setOpen}>About Us</MobileLink>
+                  <MobileLink href="/about-us#story" setOpen={setOpen}>Philosophy</MobileLink>
+                  <MobileLink href="/about-us#founders-specialists" setOpen={setOpen}>Founders & Specialists</MobileLink>
+                  <MobileLink href="/about-us#our-advisor" setOpen={setOpen}>Our Advisors</MobileLink>
                 </AccordionContent>
               </AccordionItem>
 
@@ -63,12 +63,12 @@ export function MobileNav() {
                   Services
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  <MobileLink href="#" setOpen={setOpen}>Educational Assessments</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Psychometric Assessments</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>PsychoEducational Assessments</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Clinical Assessments</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Special Education Sessions</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Training & Courses</MobileLink>
+                  <MobileLink href="/services/educational-assessments" setOpen={setOpen}>Educational Assessments</MobileLink>
+                  <MobileLink href="/services/psychometric-assessments" setOpen={setOpen}>Psychometric Assessments</MobileLink>
+                  <MobileLink href="/services/psychoeducational-assessments" setOpen={setOpen}>PsychoEducational Assessments</MobileLink>
+                  <MobileLink href="/services/clinical-assessments" setOpen={setOpen}>Clinical Assessments</MobileLink>
+                  <MobileLink href="/services/special-education-sessions" setOpen={setOpen}>Special Education Sessions</MobileLink>
+                  <MobileLink href="/services/training-and-courses" setOpen={setOpen}>Training & Courses</MobileLink>
                 </AccordionContent>
               </AccordionItem>
 
@@ -78,29 +78,29 @@ export function MobileNav() {
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
                   <div className="font-semibold text-[#2F3E33] pt-2">Opportunity</div>
-                  <MobileLink href="#" setOpen={setOpen} className="pl-2">Internship</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen} className="pl-2">Vacancies</MobileLink>
+                  <MobileLink href="/careers/internship" setOpen={setOpen} className="pl-2">Internship</MobileLink>
+                  <MobileLink href="/careers/vacancies" setOpen={setOpen} className="pl-2">Vacancies</MobileLink>
 
                   <div className="font-semibold text-[#2F3E33] pt-2">Media</div>
-                  <MobileLink href="#" setOpen={setOpen} className="pl-2">Blogs</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen} className="pl-2">News</MobileLink>
+                  <MobileLink href="/blog" setOpen={setOpen} className="pl-2">Blogs</MobileLink>
+                  <MobileLink href="/news" setOpen={setOpen} className="pl-2">News</MobileLink>
                   <MobileLink href="#" setOpen={setOpen} className="pl-2">Gallery</MobileLink>
 
-                  <MobileLink href="#" setOpen={setOpen} className="pt-2">Affiliations</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen}>Awareness Program</MobileLink>
+                  <MobileLink href="/affiliations" setOpen={setOpen} className="pt-2">Affiliations</MobileLink>
+                  <MobileLink href="/awareness-program" setOpen={setOpen}>Awareness Program</MobileLink>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
 
             <Link
-              href="#"
+              href="/contact-us"
               onClick={() => setOpen(false)}
               className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
             >
               Contact Us
             </Link>
             <Link
-              href="#"
+              href="/blog"
               onClick={() => setOpen(false)}
               className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
             >
