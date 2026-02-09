@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SanityLive } from "@/sanity/lib/live";
+import Provider from "@/components/provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,12 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} bg-[#FAF9F5] antialiased`}
+        className={`${inter.variable} bg-[##FAF9F5] antialiased`}
       >
-        <SiteHeader />
         <SanityLive />
-        {children}
-        <SiteFooter />
+        <Provider>
+          {children}
+        </Provider>
       </body>
     </html>
   );

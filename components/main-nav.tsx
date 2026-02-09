@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Briefcase, Newspaper, Image as ImageIcon, Users, Megaphone, FileText, UserPlus, Award } from "lucide-react";
+import { Briefcase, Newspaper, Image as ImageIcon, Megaphone, FileText, UserPlus, Award } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import {
@@ -15,6 +15,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { client } from "@/sanity/lib/client";
+import { POPULAR_SERVICES_QUERY } from "@/sanity/lib/queries";
+import type { ServiceNavItem } from "@/sanity/types";
 
 const aboutItems = [
   { title: "About Us", href: "/about-us", description: "Our mission and vision." },
@@ -23,27 +26,35 @@ const aboutItems = [
   { title: "Our Advisors", href: "/about-us/#our-advisor", description: "Guided by industry experts." },
 ];
 
-const serviceItems = [
-  { title: "Educational Assessments", href: "/services/educational-assessments" },
-  { title: "Psychometric Assessments", href: "/services/psychometric-assessments" },
-  { title: "PsychoEducational Assessments", href: "/services/psychoeducational-assessments" },
-  { title: "Clinical Assessments", href: "/services/clinical-assessments" },
-  { title: "Special Education Sessions", href: "/services/special-education-sessions" },
-  { title: "Training & Courses", href: "/services/training-and-courses" },
-];
-
 export function MainNav() {
+  const [serviceItems, setServiceItems] = React.useState<ServiceNavItem[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    async function fetchPopularServices() {
+      try {
+        const services = await client.fetch<ServiceNavItem[]>(POPULAR_SERVICES_QUERY);
+        setServiceItems(services || []);
+      } catch (error) {
+        console.error("Error fetching popular services:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchPopularServices();
+  }, []);
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80")} asChild>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-green hover:text-green/80")} asChild>
             <Link href="/">Home</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80">About</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent text-green hover:text-green/80">About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-[#FDFBF7]">
               {aboutItems.map((item) => (
@@ -56,30 +67,49 @@ export function MainNav() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80">Services</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent text-green hover:text-green/80">Services</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-[#FDFBF7]">
-              {serviceItems.map((item) => (
-                <ListItem key={item.title} title={item.title} href={item.href} />
-              ))}
+              {isLoading ? (
+                <li className="col-span-2 p-4 text-center text-green/60">
+                  Loading services...
+                </li>
+              ) : serviceItems.length > 0 ? (
+                serviceItems.map((item) => (
+                  <ListItem 
+                    key={item._id} 
+                    title={item.title} 
+                    href={`/services/${item.slug.current}`} 
+                  />
+                ))
+              ) : (
+                <li className="col-span-2 p-4 text-center text-green/60">
+                  No services available
+                </li>
+              )}
+              {/* Link to all services */}
+              {!isLoading && serviceItems.length > 0 && (
+                <li className="col-span-2 border-t border-[#E8ECE9] pt-3 mt-2">
+                  <Link
+                    href="/services"
+                    className="block text-center py-2 text-sm font-medium text-green hover:text-green-lite transition-colors"
+                  >
+                    View All Services →
+                  </Link>
+                </li>
+              )}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80")} asChild>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-green hover:text-green/80")} asChild>
             <Link href="/contact-us">Contact Us</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80")} asChild>
-            <Link href="/blog">Blog</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80">More</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="bg-transparent text-green hover:text-green/80">More</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="grid w-[600px] grid-cols-2 gap-6 p-6 bg-[#FDFBF7]">
 
@@ -87,12 +117,12 @@ export function MainNav() {
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 mb-2">
                   <Briefcase className="h-4 w-4 text-[#7C9082]" />
-                  <h4 className="text-sm font-semibold text-[#2F3E33] uppercase tracking-wider">Opportunity</h4>
+                  <h4 className="text-sm font-semibold text-green uppercase tracking-wider">Opportunity</h4>
                 </div>
-                <ListItem title="Internship" href="/careers/internship" icon={<UserPlus className="h-4 w-4" />}>
+                <ListItem title="Internship" href="/careers?type=internship" icon={<UserPlus className="h-4 w-4" />}>
                   Join our internship program.
                 </ListItem>
-                <ListItem title="Vacancies" href="/careers/vacancies" icon={<FileText className="h-4 w-4" />}>
+                <ListItem title="Full-time Positions" href="/careers?type=full-time" icon={<FileText className="h-4 w-4" />}>
                   Explore current job openings.
                 </ListItem>
               </div>
@@ -101,9 +131,9 @@ export function MainNav() {
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 mb-2">
                   <Newspaper className="h-4 w-4 text-[#7C9082]" />
-                  <h4 className="text-sm font-semibold text-[#2F3E33] uppercase tracking-wider">Media</h4>
+                  <h4 className="text-sm font-semibold text-green uppercase tracking-wider">Media</h4>
                 </div>
-                <ListItem title="Blogs" href="/blog" icon={<FileText className="h-4 w-4" />}>
+                <ListItem title="Blogs" href="/blogs" icon={<FileText className="h-4 w-4" />}>
                   Read our latest articles.
                 </ListItem>
                 <ListItem title="News" href="/news" icon={<Megaphone className="h-4 w-4" />}>

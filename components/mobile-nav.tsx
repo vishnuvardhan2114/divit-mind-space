@@ -19,9 +19,29 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { client } from "@/sanity/lib/client";
+import { POPULAR_SERVICES_QUERY } from "@/sanity/lib/queries";
+import type { ServiceNavItem } from "@/sanity/types";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
+  const [serviceItems, setServiceItems] = React.useState<ServiceNavItem[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    async function fetchPopularServices() {
+      try {
+        const services = await client.fetch<ServiceNavItem[]>(POPULAR_SERVICES_QUERY);
+        setServiceItems(services || []);
+      } catch (error) {
+        console.error("Error fetching popular services:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchPopularServices();
+  }, []);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -63,12 +83,26 @@ export function MobileNav() {
                   Services
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  <MobileLink href="/services/educational-assessments" setOpen={setOpen}>Educational Assessments</MobileLink>
-                  <MobileLink href="/services/psychometric-assessments" setOpen={setOpen}>Psychometric Assessments</MobileLink>
-                  <MobileLink href="/services/psychoeducational-assessments" setOpen={setOpen}>PsychoEducational Assessments</MobileLink>
-                  <MobileLink href="/services/clinical-assessments" setOpen={setOpen}>Clinical Assessments</MobileLink>
-                  <MobileLink href="/services/special-education-sessions" setOpen={setOpen}>Special Education Sessions</MobileLink>
-                  <MobileLink href="/services/training-and-courses" setOpen={setOpen}>Training & Courses</MobileLink>
+                  {isLoading ? (
+                    <span className="py-2 text-sm text-gray-500">Loading services...</span>
+                  ) : serviceItems.length > 0 ? (
+                    <>
+                      {serviceItems.map((service) => (
+                        <MobileLink 
+                          key={service._id} 
+                          href={`/services/${service.slug.current}`} 
+                          setOpen={setOpen}
+                        >
+                          {service.title}
+                        </MobileLink>
+                      ))}
+                      <MobileLink href="/services" setOpen={setOpen} className="pt-2 font-semibold">
+                        View All Services →
+                      </MobileLink>
+                    </>
+                  ) : (
+                    <span className="py-2 text-sm text-gray-500">No services available</span>
+                  )}
                 </AccordionContent>
               </AccordionItem>
 
@@ -78,13 +112,13 @@ export function MobileNav() {
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
                   <div className="font-semibold text-[#2F3E33] pt-2">Opportunity</div>
-                  <MobileLink href="/careers/internship" setOpen={setOpen} className="pl-2">Internship</MobileLink>
-                  <MobileLink href="/careers/vacancies" setOpen={setOpen} className="pl-2">Vacancies</MobileLink>
+                  <MobileLink href="/careers?type=internship" setOpen={setOpen} className="pl-2">Internship</MobileLink>
+                  <MobileLink href="/careers?type=full-time" setOpen={setOpen} className="pl-2">Full-time Positions</MobileLink>
 
                   <div className="font-semibold text-[#2F3E33] pt-2">Media</div>
-                  <MobileLink href="/blog" setOpen={setOpen} className="pl-2">Blogs</MobileLink>
+                  <MobileLink href="/blogs" setOpen={setOpen} className="pl-2">Blogs</MobileLink>
                   <MobileLink href="/news" setOpen={setOpen} className="pl-2">News</MobileLink>
-                  <MobileLink href="#" setOpen={setOpen} className="pl-2">Gallery</MobileLink>
+                  <MobileLink href="/gallery" setOpen={setOpen} className="pl-2">Gallery</MobileLink>
 
                   <MobileLink href="/affiliations" setOpen={setOpen} className="pt-2">Affiliations</MobileLink>
                   <MobileLink href="/awareness-program" setOpen={setOpen}>Awareness Program</MobileLink>
@@ -100,11 +134,11 @@ export function MobileNav() {
               Contact Us
             </Link>
             <Link
-              href="/blog"
+              href="/blogs"
               onClick={() => setOpen(false)}
               className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
             >
-              Blog
+              Blogs
             </Link>
           </div>
         </ScrollArea>
