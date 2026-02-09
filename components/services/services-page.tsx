@@ -13,6 +13,7 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(true);
   }, []);
 
@@ -23,7 +24,7 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-cream via-[#FDFBF7] to-green-lite/10 py-16 md:py-24">
+      <div className="bg-linear-to-br from-cream via-[#FDFBF7] to-green-lite/10 py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div
             className={`max-w-3xl mx-auto text-center transition-all duration-1000 ${
@@ -50,7 +51,7 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
                 <h2 className="text-3xl md:text-4xl font-bold text-green mb-2">
                   Popular Services
                 </h2>
-                <div className="h-1 bg-gradient-to-r from-transparent via-yellow to-transparent" />
+                <div className="h-1 bg-linear-to-r from-transparent via-yellow to-transparent" />
               </div>
               <p className="mt-4 text-green/60 max-w-2xl mx-auto">
                 Our most sought-after services, trusted by families and educators
@@ -122,7 +123,7 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
                 No services available yet
               </h3>
               <p className="text-green/70">
-                Check back soon! We're working on bringing you exceptional services.
+                Check back soon! We&apos;re working on bringing you exceptional services.
               </p>
             </div>
           </div>

@@ -34,7 +34,6 @@ export default async function ServicesListPage() {
 
   const servicesData = (services as ServicesQueryResult) || [];
 
-  // JSON-LD structured data for services listing
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -60,7 +59,6 @@ export default async function ServicesListPage() {
 
   return (
     <>
-      {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -17,7 +17,6 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Generate static params for all services at build time
 export async function generateStaticParams() {
   const services = await client.fetch<{ slug: string }[]>(ALL_SERVICE_SLUGS_QUERY);
 
@@ -26,7 +25,6 @@ export async function generateStaticParams() {
   })) || [];
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   
@@ -88,12 +86,10 @@ export default async function ServicePage({ params }: PageProps) {
     notFound();
   }
 
-  // Get main image URL
   const mainImageUrl = serviceData.image
     ? urlFor(serviceData.image)?.width(1200).height(600).url()
     : null;
 
-  // JSON-LD structured data for SEO with EEAT signals
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -133,14 +129,12 @@ export default async function ServicePage({ params }: PageProps) {
 
   return (
     <>
-      {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <div className="bg-[#FDFBF7] min-h-screen">
-        {/* Breadcrumb Navigation */}
         <div className="bg-cream/50 border-b border-green/10">
           <div className="container mx-auto px-4 py-4 md:px-6 lg:px-8">
             <nav className="flex items-center gap-2 text-sm text-green/60">
@@ -158,14 +152,12 @@ export default async function ServicePage({ params }: PageProps) {
         </div>
 
         <div className="mx-auto max-w-5xl px-4 py-12 md:px-6 lg:px-8 md:py-16">
-          {/* Service Header */}
           <ServiceHeader
             title={serviceData.title}
             description={serviceData.description}
             popular={serviceData.popular}
           />
 
-          {/* Main Image */}
           {mainImageUrl && (
             <div className="mt-12 overflow-hidden rounded-2xl shadow-xl">
               <Image
@@ -184,7 +176,6 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Service Content with PortableText */}
           <article className="mt-12 max-w-none">
             {Array.isArray(serviceData.body) && (
               <PortableText 
@@ -194,8 +185,7 @@ export default async function ServicePage({ params }: PageProps) {
             )}
           </article>
 
-          {/* Call to Action Section */}
-          <div className="mt-16 p-8 md:p-12 bg-gradient-to-br from-green to-green-lite rounded-2xl text-white shadow-2xl">
+          <div className="mt-16 p-8 md:p-12 bg-linear-to-br from-green to-green-lite rounded-2xl text-white shadow-2xl">
             <div className="max-w-2xl mx-auto text-center space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">
                 Ready to Get Started?
@@ -236,7 +226,6 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Back to Services Link */}
           <div className="mt-12 text-center">
             <Link
               href="/services"
