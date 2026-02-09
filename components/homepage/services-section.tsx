@@ -13,7 +13,7 @@ const services = [
         challenge: "Uncertainty about your child's needs and how to support them",
         outcome: "Clear understanding with actionable guidance tailored to your child",
         route: "/services/assessments",
-        color: "bg-[#E8ECE9]", // Light Green
+        color: "bg-[#E8ECE9]", 
         textColor: "text-[#2F3E33]",
     },
     {
@@ -23,7 +23,7 @@ const services = [
         challenge: "Your child struggles with emotions, social situations, or daily routines",
         outcome: "Improved coping skills and confidence in their unique abilities",
         route: "/services/therapy",
-        color: "bg-[#FDFBF7]", // Cream
+        color: "bg-[#FDFBF7]", 
         textColor: "text-[#2F3E33]",
     },
     {
@@ -33,7 +33,7 @@ const services = [
         challenge: "Feeling overwhelmed and unsure how to best support your child",
         outcome: "Practical strategies and renewed confidence in your parenting",
         route: "/services/parent-guidance",
-        color: "bg-[#2F3E33]", // Dark Green
+        color: "bg-[#2F3E33]", 
         textColor: "text-white",
         descriptionColor: "text-white/80",
     },
@@ -44,7 +44,7 @@ const services = [
         challenge: "Traditional education isn't meeting your child's learning style",
         outcome: "Personalized approaches that help your child thrive academically",
         route: "/services/learning-programs",
-        color: "bg-[#7C9082]", // Muted Green
+        color: "bg-[#7C9082]", 
         textColor: "text-white",
         descriptionColor: "text-white/90",
     },
@@ -65,11 +65,10 @@ export function ServicesSection() {
                         How We Support Your Family
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                        From understanding your child's unique needs to building skills that last a lifetime we're with you every step of the way.
+                        From understanding your child&apos;s unique needs to building skills that last a lifetime we&apos;re with you every step of the way.
                     </p>
                 </div>
 
-                {/* Desktop Layout: Vertical Expanding Accordion */}
                 <div className="hidden lg:flex h-[500px] gap-4">
                     {services.map((service) => {
                         const isActive = activeId === service.id;
@@ -85,48 +84,61 @@ export function ServicesSection() {
                             >
                                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
 
-                                    {/* Top: Icon + Title */}
                                     <div className={cn(
-                                        "flex flex-col gap-4 transition-all duration-300",
+                                        "flex flex-col gap-4 transition-[align-items] duration-300 ease-out",
                                         isActive ? "items-start" : "items-center"
                                     )}>
                                         <div className={cn(
-                                            "h-14 w-14 rounded-full flex items-center justify-center transition-all duration-300",
+                                            "h-14 w-14 rounded-full flex items-center justify-center transition-[background-color] duration-300 ease-out",
                                             isActive ? "bg-white/20 backdrop-blur-sm" : "bg-white/10"
                                         )}>
                                             <service.icon className={cn("h-7 w-7", service.textColor)} />
                                         </div>
-
-                                        {/* Title Container */}
-                                        <div className="relative mt-4">
-                                            {/* Horizontal Title (Collapsible with Grid) */}
-                                            <div className={cn(
-                                                "grid transition-all duration-500 ease-in-out",
-                                                isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                                            )}>
-                                                <div className="overflow-hidden">
-                                                    <h3 className={cn("font-bold text-3xl whitespace-nowrap pt-1", service.textColor)}>
-                                                        {service.title}
-                                                    </h3>
-                                                </div>
-                                            </div>
-
-                                            {/* Vertical Title (Absolute, Visible when Inactive) */}
-                                            <h3 className={cn(
-                                                "font-bold text-2xl whitespace-nowrap absolute left-1/2 -translate-x-1/2 top-0 transition-all duration-500 ease-out origin-center",
-                                                service.textColor,
-                                                !isActive ? "opacity-70 vertical-writing delay-100" : "opacity-0 scale-90 invisible"
-                                            )}>
+                                                
+                                        <div
+                                            className={cn(
+                                                "relative mt-4 h-full w-full flex contain-[layout]",
+                                                isActive ? "justify-start items-start" : "justify-center items-center"
+                                            )}
+                                        >
+                                            {/* Vertical title: in-flow when collapsed so flexbox centers it; absolute when expanded so it doesn't affect layout */}
+                                            <h3
+                                                aria-hidden={isActive}
+                                                className={cn(
+                                                    "font-bold text-2xl whitespace-nowrap vertical-writing",
+                                                    service.textColor,
+                                                    isActive ? "opacity-0 pointer-events-none select-none absolute left-0 top-0" : "opacity-70"
+                                                )}
+                                                style={{ transition: "opacity 280ms ease-out", transitionDelay: isActive ? "0ms" : "140ms" }}
+                                            >
+                                                {service.title}
+                                            </h3>
+                                            {/* Horizontal title: in-flow when expanded; absolute when collapsed so it doesn't affect centering */}
+                                            <h3
+                                                aria-hidden={!isActive}
+                                                className={cn(
+                                                    "font-bold text-3xl whitespace-nowrap pt-1",
+                                                    service.textColor,
+                                                    isActive ? "opacity-100" : "opacity-0 pointer-events-none select-none absolute left-0 top-0"
+                                                )}
+                                                style={{ transition: "opacity 280ms ease-out", transitionDelay: isActive ? "120ms" : "0ms" }}
+                                            >
                                                 {service.title}
                                             </h3>
                                         </div>
                                     </div>
 
-                                    {/* expanded content */}
-                                    <div className={cn(
-                                        "space-y-6 transition-all duration-500 delay-100",
-                                        isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 absolute bottom-8 left-8 right-8"
-                                    )}>
+                                    {/* Bottom content: always absolute, only opacity + transform animate */}
+                                    <div
+                                        className={cn(
+                                            "absolute bottom-8 left-8 right-8 space-y-6 ease-out",
+                                            isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+                                        )}
+                                        style={{
+                                            transition: "transform 400ms ease-out, opacity 400ms ease-out",
+                                            transitionDelay: isActive ? "80ms" : "0ms",
+                                        }}
+                                    >
                                         <div className="space-y-4">
                                             <div className="space-y-1">
                                                 <p className={cn("text-xs uppercase tracking-wider font-semibold opacity-70", service.textColor)}>Challenge</p>
@@ -160,7 +172,6 @@ export function ServicesSection() {
                     })}
                 </div>
 
-                {/* Mobile Layout: Stacked Cards */}
                 <div className="lg:hidden space-y-4">
                     {services.map((service) => (
                         <Link key={service.id} href={service.route} className="block">

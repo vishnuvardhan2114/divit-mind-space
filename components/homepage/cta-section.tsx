@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion, useMotionTemplate, useMotionValue } from "motion/react";
@@ -16,7 +16,7 @@ export function CtaSection() {
     }
 
     return (
-        <section className="py-20 lg:py-32 bg-white px-4">
+        <section className="py-20 lg:py-32 bg-white md:px-0 px-4">
             <div className="max-w-6xl mx-auto">
                 <div
                     className="group relative rounded-[3rem] bg-[#212925] overflow-hidden px-6 py-10 lg:px-16 lg:py-16 text-center shadow-2xl isolate"

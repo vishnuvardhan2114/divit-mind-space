@@ -77,11 +77,10 @@ export function WhoNeedsItSection() {
 
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
 
-                    {/* Left Side: Sticky Image */}
                     <div className="hidden lg:block lg:w-1/2 relative">
                         <div className="sticky top-32 h-[600px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
                             <Image
-                                src="/who-needs-it.png" // User provided image
+                                src="/who-needs-it.png" 
                                 alt="Who Needs It"
                                 fill
                                 className="object-cover"
@@ -93,7 +92,7 @@ export function WhoNeedsItSection() {
                             {/* Decorative Badge */}
                             <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/50 shadow-lg">
                                 <p className="text-[#2F3E33] text-lg font-medium leading-relaxed">
-                                    "Every individual has a unique potential waiting to be unlocked. We are here to help find the key."
+                                    &quot;Every individual has a unique potential waiting to be unlocked. We are here to help find the key.&quot;
                                 </p>
                             </div>
                         </div>

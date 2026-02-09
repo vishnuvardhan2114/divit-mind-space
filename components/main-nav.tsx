@@ -17,19 +17,19 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const aboutItems = [
-  { title: "About Us", href: "#", description: "Our mission and vision." },
-  { title: "Philosophy", href: "#", description: "The core values guiding our care." },
-  { title: "Founders & Specialists", href: "#", description: "Meet our dedicated team." },
-  { title: "Our Advisors", href: "#", description: "Guided by industry experts." },
+  { title: "About Us", href: "/about-us", description: "Our mission and vision." },
+  { title: "Philosophy", href: "/about-us/#story", description: "The core values guiding our care." },
+  { title: "Founders & Specialists", href: "/about-us/#founders-specialists", description: "Meet our dedicated team." },
+  { title: "Our Advisors", href: "/about-us/#our-advisor", description: "Guided by industry experts." },
 ];
 
 const serviceItems = [
-  { title: "Educational Assessments", href: "#" },
-  { title: "Psychometric Assessments", href: "#" },
-  { title: "PsychoEducational Assessments", href: "#" },
-  { title: "Clinical Assessments", href: "#" },
-  { title: "Special Education Sessions", href: "#" },
-  { title: "Training & Courses", href: "#" },
+  { title: "Educational Assessments", href: "/services/educational-assessments" },
+  { title: "Psychometric Assessments", href: "/services/psychometric-assessments" },
+  { title: "PsychoEducational Assessments", href: "/services/psychoeducational-assessments" },
+  { title: "Clinical Assessments", href: "/services/clinical-assessments" },
+  { title: "Special Education Sessions", href: "/services/special-education-sessions" },
+  { title: "Training & Courses", href: "/services/training-and-courses" },
 ];
 
 export function MainNav() {
@@ -38,7 +38,7 @@ export function MainNav() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80")} asChild>
-            <Link href="#">Home</Link>
+            <Link href="/">Home</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
@@ -68,13 +68,13 @@ export function MainNav() {
 
         <NavigationMenuItem>
           <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80")} asChild>
-            <Link href="#">Contact Us</Link>
+            <Link href="/contact-us">Contact Us</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-[#2F3E33] hover:text-[#2F3E33]/80")} asChild>
-            <Link href="#">Blog</Link>
+            <Link href="/blog">Blog</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
@@ -89,10 +89,10 @@ export function MainNav() {
                   <Briefcase className="h-4 w-4 text-[#7C9082]" />
                   <h4 className="text-sm font-semibold text-[#2F3E33] uppercase tracking-wider">Opportunity</h4>
                 </div>
-                <ListItem title="Internship" href="#" icon={<UserPlus className="h-4 w-4" />}>
+                <ListItem title="Internship" href="/careers/internship" icon={<UserPlus className="h-4 w-4" />}>
                   Join our internship program.
                 </ListItem>
-                <ListItem title="Vacancies" href="#" icon={<FileText className="h-4 w-4" />}>
+                <ListItem title="Vacancies" href="/careers/vacancies" icon={<FileText className="h-4 w-4" />}>
                   Explore current job openings.
                 </ListItem>
               </div>
@@ -103,26 +103,26 @@ export function MainNav() {
                   <Newspaper className="h-4 w-4 text-[#7C9082]" />
                   <h4 className="text-sm font-semibold text-[#2F3E33] uppercase tracking-wider">Media</h4>
                 </div>
-                <ListItem title="Blogs" href="#" icon={<FileText className="h-4 w-4" />}>
+                <ListItem title="Blogs" href="/blog" icon={<FileText className="h-4 w-4" />}>
                   Read our latest articles.
                 </ListItem>
-                <ListItem title="News" href="#" icon={<Megaphone className="h-4 w-4" />}>
+                <ListItem title="News" href="/news" icon={<Megaphone className="h-4 w-4" />}>
                   Latest updates and announcements.
                 </ListItem>
-                <ListItem title="Gallery" href="#" icon={<ImageIcon className="h-4 w-4" />}>
+                <ListItem title="Gallery" href="/gallery" icon={<ImageIcon className="h-4 w-4" />}>
                   See our events and activities.
                 </ListItem>
               </div>
 
               {/* Bottom Section */}
               <div className="col-span-2 grid grid-cols-2 gap-4 border-t border-[#E8ECE9] pt-4">
-                <Link href="#" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <Link href="/affiliations" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                   <div className="flex items-center gap-2 text-sm font-medium leading-none group-hover:text-[#7C9082] transition-colors">
                     <Award className="h-4 w-4" />
                     Affiliations
                   </div>
                 </Link>
-                <Link href="#" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                <Link href="/awareness-program" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                   <div className="flex items-center gap-2 text-sm font-medium leading-none group-hover:text-[#7C9082] transition-colors">
                     <Megaphone className="h-4 w-4" />
                     Awareness Program
