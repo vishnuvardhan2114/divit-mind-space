@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "./ui/textarea";
 
 export function BookConsultationModal({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = React.useState(false);
@@ -83,6 +84,10 @@ function ConsultationForm() {
             <div className="grid gap-2">
                 <Label htmlFor="phone">Phone Number</Label>
                 <Input id="phone" className="h-11" defaultValue="" placeholder="+1 (555) 000-0000" />
+            </div>
+            <div className="grid gap-2">
+                <Label htmlFor="message">Message</Label>
+                <Textarea id="message" className="h-11" defaultValue="" placeholder="Tell us about your needs and goals" />
             </div>
             <Button type="submit" className="bg-[#2F3E33] h-11 hover:bg-[#2F3E33]/90 text-white">Request Call</Button>
         </form>
