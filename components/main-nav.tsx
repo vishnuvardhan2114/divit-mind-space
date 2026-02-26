@@ -146,12 +146,12 @@ export function MainNav() {
 
               {/* Bottom Section */}
               <div className="col-span-2 grid grid-cols-2 gap-4 border-t border-[#E8ECE9] pt-4">
-                <Link href="/affiliations" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                {/* <Link href="/affiliations" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                   <div className="flex items-center gap-2 text-sm font-medium leading-none group-hover:text-[#7C9082] transition-colors">
                     <Award className="h-4 w-4" />
                     Affiliations
                   </div>
-                </Link>
+                </Link> */}
                 <Link href="/awareness-program" className="group block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                   <div className="flex items-center gap-2 text-sm font-medium leading-none group-hover:text-[#7C9082] transition-colors">
                     <Megaphone className="h-4 w-4" />
