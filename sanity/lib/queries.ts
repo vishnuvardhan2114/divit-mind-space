@@ -169,6 +169,7 @@ export const ALL_SERVICES_QUERY = `*[_type == "services"] | order(popular desc, 
   slug,
   description,
   popular,
+  isTherapy,
   "image": image{
     asset->{url},
     alt
@@ -203,6 +204,7 @@ export const SINGLE_SERVICE_QUERY = `*[_type == "services" && slug.current == $s
   description,
   image,
   popular,
+  isTherapy,
   body,
   seo
 }`;
@@ -213,6 +215,23 @@ export const SINGLE_SERVICE_QUERY = `*[_type == "services" && slug.current == $s
  */
 export const ALL_SERVICE_SLUGS_QUERY = `*[_type == "services" && defined(slug.current)] {
   "slug": slug.current
+}`;
+
+/**
+ * Query to fetch only therapy services (isTherapy == true)
+ * Used on homepage when Therapy card is selected
+ */
+export const THERAPY_SERVICES_QUERY = `*[_type == "services" && isTherapy == true] | order(popular desc, title asc) {
+  _id,
+  title,
+  slug,
+  description,
+  popular,
+  isTherapy,
+  "image": image{
+    asset->{url},
+    alt
+  }
 }`;
 
 // ============================================================================

@@ -17,14 +17,10 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
     setIsVisible(true);
   }, []);
 
-  // Split services into popular and regular
-  const popularServices = services.filter((service) => service.popular);
-  const regularServices = services.filter((service) => !service.popular);
-
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
       {/* Hero Section */}
-      <div className="bg-linear-to-br from-cream via-[#FDFBF7] to-green-lite/10 py-16 md:py-24">
+      <div className="bg-linear-to-br from-cream via-[#FDFBF7] to-green-lite/10 pt-16 md:pt-24">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div
             className={`max-w-3xl mx-auto text-center transition-all duration-1000 ${
@@ -43,22 +39,11 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
       </div>
 
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8 md:py-16">
-        {/* Popular Services Section */}
-        {popularServices.length > 0 && (
-          <div className="mb-16">
-            <div className="mb-8 text-center">
-              <div className="inline-block">
-                <h2 className="text-3xl md:text-4xl font-bold text-green mb-2">
-                  Popular Services
-                </h2>
-                <div className="h-1 bg-linear-to-r from-transparent via-yellow to-transparent" />
-              </div>
-              <p className="mt-4 text-green/60 max-w-2xl mx-auto">
-                Our most sought-after services, trusted by families and educators
-              </p>
-            </div>
+        {/* Single services list */}
+        {services.length > 0 ? (
+          <div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {popularServices.map((service, index) => (
+              {services.map((service, index) => (
                 <div
                   key={service._id}
                   className="animate-fade-in"
@@ -72,33 +57,7 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
               ))}
             </div>
           </div>
-        )}
-
-        {/* All Services Section */}
-        {regularServices.length > 0 && (
-          <div>
-            <div className="mb-8 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-green mb-2">
-                {popularServices.length > 0 ? "More Services" : "All Services"}
-              </h2>
-              <div className="mx-auto mt-2 h-1 w-24 bg-green-lite" />
-            </div>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {regularServices.map((service, index) => (
-                <div
-                  key={service._id}
-                  className="animate-fade-in"
-                  style={{
-                    animationDelay: `${(index + popularServices.length) * 150}ms`,
-                    animationFillMode: "both",
-                  }}
-                >
-                  <ServiceCard service={service} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        ) : null}
 
         {/* Empty State */}
         {services.length === 0 && (

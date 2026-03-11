@@ -150,6 +150,7 @@ export interface ServiceListItem {
     alt?: string;
   };
   popular: boolean;
+  isTherapy?: boolean;
 }
 
 // Service Navigation Item

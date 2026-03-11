@@ -9,8 +9,8 @@ import { FaqSection } from "@/components/homepage/faq-section";
 import { CtaSection } from "@/components/homepage/cta-section";
 import { ValueProps } from "@/components/homepage/value-props";
 import { sanityFetch } from "@/sanity/lib/live";
-import { TOP_REVIEWS_QUERY } from "@/sanity/lib/queries";
-import { ReviewsQueryResult } from "@/sanity/types";
+import { TOP_REVIEWS_QUERY, THERAPY_SERVICES_QUERY } from "@/sanity/lib/queries";
+import { ReviewsQueryResult, ServicesQueryResult } from "@/sanity/types";
 
 export const metadata: Metadata = {
   title: "Divit MindSpace | Neurodivergent Care & Education in Bangalore",
@@ -132,9 +132,12 @@ const faqJsonLd = {
 };
 
 export default async function Page() {
-  const { data: reviews } = await sanityFetch({
-    query: TOP_REVIEWS_QUERY,
-  });
+  const [{ data: reviews }, { data: therapyServices }] = await Promise.all([
+    sanityFetch({ query: TOP_REVIEWS_QUERY }),
+    sanityFetch({ query: THERAPY_SERVICES_QUERY, tags: ["services"] }),
+  ]);
+
+  const therapyServicesData = (therapyServices as ServicesQueryResult) ?? [];
 
   return (
     <>
@@ -148,10 +151,10 @@ export default async function Page() {
       />
       <main>
         <HeroSection />
-        <FeaturesShowcaseSection isHomepage />
+        <ServicesSection therapyServices={therapyServicesData} />
         <WhyJoinSection />
         <ValueProps />
-        <ServicesSection />
+        <FeaturesShowcaseSection isHomepage />
         <WhoNeedsItSection />
         <TestimonialsSection reviews={(reviews as ReviewsQueryResult) ?? []} />
         <FaqSection />

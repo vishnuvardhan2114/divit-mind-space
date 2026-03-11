@@ -31,17 +31,17 @@ export function HeroSection() {
                 className="h-12 rounded-xl bg-green px-8 text-base font-medium text-white shadow-lg shadow-[#2F3E33]/10 hover:bg-[#2F3E33]/90 hover:shadow-[#7C9082]/20 transition-all duration-300"
               >
                 <WhatsAppConsultationLink>
-                  Book a Consultation
+                  Book Free Consultation
                 </WhatsAppConsultationLink>
               </Button>
-              <Link href="/about-us">
-                <Button variant="outline" className="h-12 rounded-xl border-green bg-transparent px-8 text-base font-medium text-[#2F3E33] hover:bg-[#2F3E33]/5">
+              <Link href="/about-us#philosophy">
+                <Button variant="link" className="h-12 rounded-xl px-8 text-base font-medium text-[#2F3E33] ">
                   Learn about our approach
                 </Button>
               </Link>
             </div>
 
-            <div className="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
+            {/* <div className="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
               <div className="flex -space-x-3">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="w-10 h-10 rounded-full border-2 border-[#FDFBF7] bg-gray-200 overflow-hidden relative">
@@ -56,7 +56,7 @@ export function HeroSection() {
                 <div className="w-10 h-10 rounded-full border-2 pl-2 border-[#FDFBF7] bg-[#E8ECE9] flex items-center justify-center text-[#2F3E33] text-xs font-semibold">1k+</div>
               </div>
               <p>Families trust us for <span className="font-semibold text-[#2F3E33]">comprehensive care.</span></p>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Visual */}

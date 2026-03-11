@@ -19,13 +19,6 @@ import { client } from "@/sanity/lib/client";
 import { POPULAR_SERVICES_QUERY } from "@/sanity/lib/queries";
 import type { ServiceNavItem } from "@/sanity/types";
 
-const aboutItems = [
-  { title: "About Us", href: "/about-us", description: "Our mission and vision." },
-  { title: "Philosophy", href: "/about-us/#story", description: "The core values guiding our care." },
-  { title: "Founders & Specialists", href: "/about-us/#founders-specialists", description: "Meet our dedicated team." },
-  { title: "Our Advisors", href: "/about-us/#our-advisor", description: "Guided by industry experts." },
-];
-
 export function MainNav() {
   const [serviceItems, setServiceItems] = React.useState<ServiceNavItem[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -54,16 +47,9 @@ export function MainNav() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent text-green hover:text-green/80">About</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-[#FDFBF7]">
-              {aboutItems.map((item) => (
-                <ListItem key={item.title} title={item.title} href={item.href}>
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
+          <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-green hover:text-green/80")} asChild>
+            <Link href="/about-us">About Us</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
@@ -119,10 +105,10 @@ export function MainNav() {
                   <Briefcase className="h-4 w-4 text-[#7C9082]" />
                   <h4 className="text-sm font-semibold text-green uppercase tracking-wider">Opportunity</h4>
                 </div>
-                <ListItem title="Internship" href="/careers?type=internship" icon={<UserPlus className="h-4 w-4" />}>
+                <ListItem as="div" title="Internship" href="/careers?type=internship" icon={<UserPlus className="h-4 w-4" />}>
                   Join our internship program.
                 </ListItem>
-                <ListItem title="Full-time Positions" href="/careers?type=full-time" icon={<FileText className="h-4 w-4" />}>
+                <ListItem as="div" title="Full-time Positions" href="/careers?type=full-time" icon={<FileText className="h-4 w-4" />}>
                   Explore current job openings.
                 </ListItem>
               </div>
@@ -133,13 +119,13 @@ export function MainNav() {
                   <Newspaper className="h-4 w-4 text-[#7C9082]" />
                   <h4 className="text-sm font-semibold text-green uppercase tracking-wider">Media</h4>
                 </div>
-                <ListItem title="Blogs" href="/blogs" icon={<FileText className="h-4 w-4" />}>
+                <ListItem as="div" title="Blogs" href="/blogs" icon={<FileText className="h-4 w-4" />}>
                   Read our latest articles.
                 </ListItem>
-                <ListItem title="News" href="/news" icon={<Megaphone className="h-4 w-4" />}>
+                <ListItem as="div" title="News" href="/news" icon={<Megaphone className="h-4 w-4" />}>
                   Latest updates and announcements.
                 </ListItem>
-                <ListItem title="Gallery" href="/gallery" icon={<ImageIcon className="h-4 w-4" />}>
+                <ListItem as="div" title="Gallery" href="/gallery" icon={<ImageIcon className="h-4 w-4" />}>
                   See our events and activities.
                 </ListItem>
               </div>
@@ -170,10 +156,10 @@ export function MainNav() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { icon?: React.ReactNode }
->(({ className, title, children, icon, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { icon?: React.ReactNode; as?: "li" | "div" }
+>(({ className, title, children, icon, as: Wrapper = "li", ...props }, ref) => {
   return (
-    <li>
+    <Wrapper>
       <NavigationMenuLink asChild>
         <a
           ref={ref}
@@ -200,7 +186,7 @@ const ListItem = React.forwardRef<
           </div>
         </a>
       </NavigationMenuLink>
-    </li>
+    </Wrapper>
   );
 });
 ListItem.displayName = "ListItem";

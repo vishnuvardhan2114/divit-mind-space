@@ -37,20 +37,20 @@ const contact = {
 const socialLinks = [
     { href: "https://instagram.com/divitmindspace", icon: Instagram, label: "Instagram" },
     { href: "https://facebook.com/divitmindspace", icon: Facebook, label: "Facebook" },
-    { href: "https://linkedin.com/company/divitmindspace", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://www.linkedin.com/in/divitmindspace/", icon: Linkedin, label: "LinkedIn" },
     { href: "https://x.com/divitmindspace", icon: Twitter, label: "X (Twitter)" },
 ];
 
 export function SiteFooter() {
     return (
         <footer className="bg-white border-t border-gray-100 pt-20 pb-10">
-            <div className="container max-w-7xl mx-auto px-6">
+            <div className=" max-w-7xl mx-auto px-4">
 
                 {/* Top Section: CTA & Newsletter */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-20">
-                    <p className="text-xl md:text-2xl font-bold text-[#222222] max-w-lg leading-tight">
+                    {/* <p className="text-xl md:text-2xl font-bold text-[#222222] max-w-lg leading-tight">
                         Empowering neurodivergent individuals and their families through expert care and education.
-                    </p>
+                    </p> */}
 
                     {/* Simple Email Capture */}
                     {/* <div className="w-full max-w-sm">

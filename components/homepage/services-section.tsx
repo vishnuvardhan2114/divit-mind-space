@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, FileText, Heart, Users, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ServiceCard } from "@/components/services/service-card";
+import type { ServiceListItem } from "@/sanity/types";
 
 const services = [
     {
@@ -13,7 +14,7 @@ const services = [
         icon: FileText,
         challenge: "Uncertainty about your child's needs and how to support them",
         outcome: "Clear understanding with actionable guidance tailored to your child",
-        route: "/services",
+        route: "/services/psychometric-assessments",
         color: "bg-[#004540]",
         textColor: "text-white",
         descriptionColor: "text-white",
@@ -24,7 +25,7 @@ const services = [
         icon: Heart,
         challenge: "Your child struggles with emotions, social situations, or daily routines",
         outcome: "Improved coping skills and confidence in their unique abilities",
-        route: "/services",
+        route: "/services?therapy=true",
         color: "bg-blue",
         textColor: "text-purple",
         descriptionColor: "text-purple",
@@ -35,7 +36,7 @@ const services = [
         icon: Users,
         challenge: "Feeling overwhelmed and unsure how to best support your child",
         outcome: "Practical strategies and renewed confidence in your parenting",
-        route: "/services",
+        route: "/services/counselling-teenagers--adults",
         color: "bg-yellow",
         textColor: "text-purple",
         descriptionColor: "text-purple",
@@ -46,14 +47,18 @@ const services = [
         icon: GraduationCap,
         challenge: "Traditional education isn't meeting your child's learning style",
         outcome: "Personalized approaches that help your child thrive academically",
-        route: "/services",
+        route: "/services/training-program-shadow-teacher-training-program",
         color: "bg-purple",
-        textColor: "text-blue",
-        descriptionColor: "text-blue",
+        textColor: "text-white",
+        descriptionColor: "text-white",
     },
 ];
 
-export function ServicesSection() {
+interface ServicesSectionProps {
+    therapyServices?: ServiceListItem[];
+}
+
+export function ServicesSection({ therapyServices = [] }: ServicesSectionProps) {
     const [activeId, setActiveId] = useState<string>("assessments");
 
     return (

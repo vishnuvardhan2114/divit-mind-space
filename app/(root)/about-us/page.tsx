@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/about-us/hero-section";
+import { PhilosophySection } from "@/components/about-us/philosophy-section";
 import { BentoGridSection } from "@/components/about-us/bento-grid-section";
 import { StorySection } from "@/components/about-us/story-section";
 import { OurAdvisorSection } from "@/components/about-us/our-advisor-section";
@@ -62,10 +63,11 @@ export default function AboutUsPage() {
   return (
     <main className="min-h-screen">
       <HeroSection />
-      <BentoGridSection />
+      <PhilosophySection />
+      {/* <BentoGridSection /> */}
       <StorySection />
       <FoundersSpecialistsSection />
-      <OurAdvisorSection />
+      {/* <OurAdvisorSection /> */}
       <CtaSection />
     </main>
   );

@@ -51,6 +51,13 @@ export const servicesType = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'isTherapy',
+      type: 'boolean',
+      title: 'Is Therapy',
+      description: 'Mark this service as therapy to feature it prominently.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'body',
       type: 'array',
       of: [

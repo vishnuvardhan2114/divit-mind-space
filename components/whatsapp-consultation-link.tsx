@@ -34,7 +34,7 @@ export function WhatsAppConsultationLink({
         className
       )}
     >
-      <WhatsAppIcon />
+      {/* <WhatsAppIcon /> */}
       {children}
     </a>
   );

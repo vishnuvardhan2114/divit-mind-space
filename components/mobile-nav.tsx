@@ -65,19 +65,15 @@ export function MobileNav() {
               Home
             </Link>
 
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="about" className="border-none">
-                <AccordionTrigger className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] hover:no-underline">
-                  About
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  <MobileLink href="/about-us" setOpen={setOpen}>About Us</MobileLink>
-                  <MobileLink href="/about-us#story" setOpen={setOpen}>Philosophy</MobileLink>
-                  <MobileLink href="/about-us#founders-specialists" setOpen={setOpen}>Founders & Specialists</MobileLink>
-                  <MobileLink href="/about-us#our-advisor" setOpen={setOpen}>Our Advisors</MobileLink>
-                </AccordionContent>
-              </AccordionItem>
+            <Link
+              href="/about-us"
+              onClick={() => setOpen(false)}
+              className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
+            >
+              About Us
+            </Link>
 
+            <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="services" className="border-none">
                 <AccordionTrigger className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] hover:no-underline">
                   Services
