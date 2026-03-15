@@ -72,9 +72,9 @@ export function FaqSection() {
     const [openId, setOpenId] = useState<string | null>("item-1");
 
     return (
-        <section className="pt-6 pb-16 lg:pt-8 lg:pb-24 bg-cream relative overflow-hidden">
+        <section className="pt-4 pb-6 lg:pt-4 lg:pb-8 bg-cream relative overflow-hidden">
             <div className="max-w-4xl mx-auto px-4 relative z-10">
-                <div className="text-center mb-12">
+                <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center text-purple text-sm font-bold tracking-widest uppercase mb-3">
                         Common Queries
                     </div>

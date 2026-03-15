@@ -26,7 +26,7 @@ const items = [
 
 export function WhoNeedsItSection() {
     return (
-        <section className="pt-6 pb-16 lg:pt-8 lg:pb-24 bg-cream">
+        <section className="pt-6 pb-6 lg:pt-6 lg:pb-8 bg-cream">
             <div className="container">
                 {/* Bridge Line */}
                 <div className="flex items-center gap-4 mb-8">
