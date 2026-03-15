@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import Image from "next/image";
 import { WhatsAppConsultationLink } from "@/components/whatsapp-consultation-link";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,15 @@ export function HeroSection() {
 
           {/* Text Content */}
           <div className="flex-1 space-y-5 text-center lg:text-left animate-in slide-in-from-bottom duration-700 fade-in">
+            {/* Announcement Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple/10 border border-purple/20 text-purple text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple"></span>
+              </span>
+              Now accepting new enrollments for Fall 2024
+            </div>
+
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-green leading-[1.05]">
               Understanding exceptional minds, supporting<br />
               <span className="text-purple">
@@ -41,22 +50,26 @@ export function HeroSection() {
               </Link>
             </div>
 
-            {/* <div className="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
-              <div className="flex -space-x-3">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-[#FDFBF7] bg-gray-200 overflow-hidden relative">
-                    <Image
-                      src={`https://i.pravatar.cc/100?img=${i + 20}`}
-                      alt="User"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-                <div className="w-10 h-10 rounded-full border-2 pl-2 border-[#FDFBF7] bg-[#E8ECE9] flex items-center justify-center text-[#2F3E33] text-xs font-semibold">1k+</div>
+            {/* Trust Metrics */}
+            <div className="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4">
+              <div className="flex flex-col items-center lg:items-start">
+                <span className="text-2xl font-bold text-green">100+</span>
+                <span className="text-[10px] font-bold text-green/60 uppercase tracking-widest">Families Served</span>
               </div>
-              <p>Families trust us for <span className="font-semibold text-[#2F3E33]">comprehensive care.</span></p>
-            </div> */}
+              <div className="w-px h-8 bg-green/10 hidden sm:block" />
+              <div className="flex flex-col items-center lg:items-start">
+                <span className="text-2xl font-bold text-green">15+</span>
+                <span className="text-[10px] font-bold text-green/60 uppercase tracking-widest">Expert Therapists</span>
+              </div>
+              <div className="w-px h-8 bg-green/10 hidden sm:block" />
+              <div className="flex flex-col items-center lg:items-start">
+                <div className="flex items-center gap-1">
+                  <span className="text-2xl font-bold text-green">4.9/5</span>
+                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                </div>
+                <span className="text-[10px] font-bold text-green/60 uppercase tracking-widest">Customer Rating</span>
+              </div>
+            </div>
           </div>
 
           {/* Right Visual */}
