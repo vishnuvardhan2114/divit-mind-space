@@ -29,8 +29,8 @@ export function CtaSection() {
                             transition={{ duration: 0.6 }}
                             className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight"
                         >
-                            Ready for <br />
-                            what&apos;s next?
+                            Take the <br />
+                            first step.
                         </motion.h2>
 
                         <Link
