@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SanityLive } from "@/sanity/lib/live";
 import Provider from "@/components/provider";
@@ -8,6 +8,13 @@ import { ClarityInit } from "@/components/clarity-init";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -119,7 +126,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} bg-[##FAF9F5] antialiased`}>
+      <body className={`${inter.variable} ${cormorant.variable} bg-[#FAF9F5] antialiased`}>
         <ClarityInit />
         <script
           type="application/ld+json"

@@ -10,8 +10,8 @@ export function HeroSection() {
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
-          {/* Text Content */}
-          <div className="flex-1 space-y-4 text-center lg:text-left animate-in slide-in-from-bottom duration-700 fade-in">
+          {/* Text Content - Expanded flex for breathing room */}
+          <div className="flex-[1.2] space-y-4 text-center lg:text-left animate-in slide-in-from-bottom duration-700 fade-in">
             {/* Announcement Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/50 text-purple text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">
               <span className="relative flex h-2 w-2">
@@ -21,10 +21,18 @@ export function HeroSection() {
               ☀️ Limited Seats: Summer Explorers Camp Registration Open
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-green leading-[1.05] max-w-2xl">
-              Empowering Every Child’s<br className="hidden sm:block" />
-              <span className="text-purple"> Unique Journey.</span>
-            </h1>
+            <div className="flex flex-col w-full max-w-2xl mx-auto lg:mx-0">
+              <h1 className="flex flex-col tracking-tight text-green leading-none">
+                <span className="flex justify-between items-baseline w-full text-[clamp(1.5rem,4vw,2.8rem)] font-bold uppercase tracking-[0.2em] mb-2">
+                  <span>E</span><span>M</span><span>P</span><span>O</span><span>W</span><span>E</span><span>R</span><span>I</span><span>N</span><span>G</span>
+                  <span className="ml-2">E</span><span>V</span><span>E</span><span>R</span><span>Y</span>
+                  <span className="ml-2">C</span><span>H</span><span>I</span><span>L</span><span>D</span><span>'</span><span>S</span>
+                </span>
+                <span className="text-[clamp(2.5rem,8vw,5.5rem)] font-serif italic text-purple leading-[0.9] -mt-1 font-medium">
+                  Unique Journey.
+                </span>
+              </h1>
+            </div>
 
             <p className="max-w-xl mx-auto lg:mx-0 text-base lg:text-lg text-green/90 leading-relaxed font-medium">
               Professional therapy and developmental support for neurodiverse children.
