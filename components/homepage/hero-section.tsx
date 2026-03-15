@@ -12,12 +12,12 @@ export function HeroSection() {
           {/* Text Content */}
           <div className="flex-1 space-y-4 text-center lg:text-left animate-in slide-in-from-bottom duration-700 fade-in">
             {/* Announcement Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple/10 border border-purple/20 text-purple text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/50 text-purple text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-purple"></span>
               </span>
-              Limited Seats: Summer Explorers Camp Registration Open
+              ☀️ Limited Seats: Summer Explorers Camp Registration Open
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-green leading-[1.05]">
