@@ -8,7 +8,7 @@ import { MobileNav } from "@/components/mobile-nav";
 export function SiteHeader() {
     return (
         <header className="sticky top-0 z-50 w-full bg-[#FAF9F5]/80 backdrop-blur-lg border-b border-[#2F3E33]/5">
-            <div className="container flex h-18 max-w-screen-2xl items-center justify-between">
+            <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
                 <Link href="/" className="flex items-center space-x-2 transition-opacity hover:opacity-90">
                     <Image src="/divit-mindspace-logo.png" alt="Logo" width={100} height={100} className="w-14 h-auto" />
                 </Link>

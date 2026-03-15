@@ -36,6 +36,7 @@ export function MainNav() {
 
     fetchPopularServices();
   }, []);
+
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList className="gap-1 lg:gap-2">
@@ -72,7 +73,6 @@ export function MainNav() {
                   No services available
                 </li>
               )}
-              {/* Link to all services */}
               {!isLoading && serviceItems.length > 0 && (
                 <li className="col-span-2 border-t border-[#E8ECE9] pt-4 mt-2">
                   <Link
@@ -97,8 +97,6 @@ export function MainNav() {
           <NavigationMenuTrigger className="bg-transparent text-green hover:text-green/80 font-bold text-sm tracking-tight transition-colors">Resources</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="grid w-[640px] grid-cols-2 gap-8 p-8 bg-white rounded-[2rem] shadow-2xl">
-
-              {/* Media & Content */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="h-8 w-8 rounded-lg bg-[#E8ECE9]/50 flex items-center justify-center">
@@ -106,18 +104,17 @@ export function MainNav() {
                   </div>
                   <h4 className="text-xs font-bold text-green uppercase tracking-widest">Media</h4>
                 </div>
-                <ListItem as="div" title="Blogs" href="/blogs" icon={<FileText className="h-4 w-4" />}>
+                <ListItem title="Blogs" href="/blogs" icon={<FileText className="h-4 w-4" />}>
                   Read our latest articles.
                 </ListItem>
-                <ListItem as="div" title="News" href="/news" icon={<Megaphone className="h-4 w-4" />}>
+                <ListItem title="News" href="/news" icon={<Megaphone className="h-4 w-4" />}>
                   Latest updates and announcements.
                 </ListItem>
-                <ListItem as="div" title="Gallery" href="/gallery" icon={<ImageIcon className="h-4 w-4" />}>
+                <ListItem title="Gallery" href="/gallery" icon={<ImageIcon className="h-4 w-4" />}>
                   See our events and activities.
                 </ListItem>
               </div>
 
-              {/* Opportunities */}
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="h-8 w-8 rounded-lg bg-[#E8ECE9]/50 flex items-center justify-center">
@@ -125,7 +122,7 @@ export function MainNav() {
                   </div>
                   <h4 className="text-xs font-bold text-green uppercase tracking-widest">Careers</h4>
                 </div>
-                <ListItem as="div" title="Join Our Team" href="/careers" icon={<UserPlus className="h-4 w-4" />}>
+                <ListItem title="Join Our Team" href="/careers" icon={<UserPlus className="h-4 w-4" />}>
                   Explore internship and full-time roles.
                 </ListItem>
                 <Link href="/awareness-program" className="group block select-none space-y-1 rounded-xl p-4 leading-none no-underline outline-none transition-all hover:bg-cream border border-transparent hover:border-green/10 mt-2">
@@ -135,7 +132,6 @@ export function MainNav() {
                   </div>
                 </Link>
               </div>
-
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -152,10 +148,10 @@ export function MainNav() {
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a"> & { icon?: React.ReactNode; as?: "li" | "div" }
->(({ className, title, children, icon, as: Wrapper = "li", ...props }, ref) => {
+  React.ComponentPropsWithoutRef<"a"> & { icon?: React.ReactNode }
+>(({ className, title, children, icon, ...props }, ref) => {
   return (
-    <Wrapper>
+    <li>
       <NavigationMenuLink asChild>
         <a
           ref={ref}
@@ -182,7 +178,7 @@ const ListItem = React.forwardRef<
           </div>
         </a>
       </NavigationMenuLink>
-    </Wrapper>
+    </li>
   );
 });
 ListItem.displayName = "ListItem";
