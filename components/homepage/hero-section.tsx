@@ -21,11 +21,9 @@ export function HeroSection() {
               ☀️ Limited Seats: Summer Explorers Camp Registration Open
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-green leading-[1.05]">
-              Empowering Every Child’s<br />
-              <span className="text-purple">
-                Unique Journey.
-              </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-green leading-[1.05] max-w-2xl">
+              Empowering Every Child’s<br className="hidden sm:block" />
+              <span className="text-purple"> Unique Journey.</span>
             </h1>
 
             <p className="max-w-xl mx-auto lg:mx-0 text-base lg:text-lg text-green/90 leading-relaxed font-medium">
