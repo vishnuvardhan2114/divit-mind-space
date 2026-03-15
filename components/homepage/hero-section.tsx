@@ -13,7 +13,7 @@ export function HeroSection() {
           {/* Text Content */}
           <div className="flex-1 space-y-6 text-center lg:text-left animate-in slide-in-from-bottom duration-700 fade-in">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-green leading-[1.10]">
-              Understanding unique minds, supporting<br />
+              Understanding exceptional minds, supporting<br />
               <span className="text-purple">
                 brighter futures.
               </span>
