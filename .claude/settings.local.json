@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(npx next lint:*)",
+      "Bash(node -e:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nServices: redesign to outcome-first always-visible grid\n\n- Replace hover-to-expand accordion with simple 4-column grid\n- Lead with benefit statements \\(\"Get clear answers...\"\\) not service names\n- Remove heavy section header, add subtle \"Here 's how we help\" bridge\n- Convert to server component \\(remove useState, reduce JS bundle\\)\n- Tighten spacing for seamless hero-to-services flow\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nHero: add yellow highlight and justify both headline lines\n\n- Add yellow highlighter backdrop to Line 1 \\(EMPOWERING EVERY CHILD''S\\)\n- Convert Line 2 to justified individual letters for pixel-perfect alignment\n- Adjust max-width \\(540px → 580px\\) and fine-tune font sizes\n- Both lines now start and end at exact same horizontal points\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git restore:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx next build)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout:*)",
+      "Bash(copy:*)",
+      "Bash(cmd /c copy:*)",
+      "Bash(cmd /c dir \"D:\\\\plus_ev_code_base\\\\divit-mind-space\\\\public\\\\child_development_journey_roadmap.png\")",
+      "Bash(powershell:*)"
+    ]
+  }
+}
