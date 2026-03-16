@@ -1,111 +1,92 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
+import { WhatsAppConsultationLink } from "@/components/whatsapp-consultation-link";
 
 export function AwarenessHero() {
-  const titleWords = "Building Awareness, Breaking Barriers".split(" ");
-  const subtitle = "Empowering Communities Through Education";
-
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-linear-to-br from-[#FAF9F5] via-cream to-[#FAF9F5]">
-      {/* Organic Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Large organic blob - top right */}
-        <motion.div
-          className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-linear-to-br from-green-lite/20 to-green/10 blur-3xl"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-        />
-        
-        {/* Medium organic blob - bottom left */}
-        <motion.div
-          className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-linear-to-tr from-yellow/15 to-purple/10 blur-3xl"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-        />
-        
-        {/* Small accent blob - center */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-linear-to-br from-purple/5 to-transparent blur-2xl"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1.2, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        />
-
-        {/* Grain texture overlay */}
-        <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXhpIHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cGF0aCBkPSJNMCAwaDMwMHYzMDBIMHoiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1Ii8+PC9zdmc+')]" />
-      </div>
-
-      {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-20 md:py-24">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
-          {/* Main Title with Word-by-Word Animation */}
-          <div className="overflow-hidden">
-            <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-green leading-[1.1] tracking-tight"
-              style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif" }}
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-              {titleWords.map((word, idx) => (
-                <motion.span
-                  key={idx}
-                  className="inline-block mr-3 md:mr-4"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.1 + idx * 0.1,
-                    ease: [0.25, 0.1, 0.25, 1]
-                  }}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
-          </div>
-
-          {/* Subtitle */}
-          <motion.p
-            className="text-xl md:text-2xl lg:text-3xl text-green/70 font-light tracking-wide"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            {subtitle}
-          </motion.p>
-
-          {/* Decorative Line */}
+    <section className="relative py-12 lg:py-16 bg-[#FAF9F5] overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left: Content */}
           <motion.div
-            className="flex justify-center items-center gap-4 pt-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="space-y-6 text-center lg:text-left"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="h-px w-16 md:w-24 bg-linear-to-r from-transparent via-green/30 to-green/30" />
-            <div className="w-2 h-2 rounded-full bg-yellow" />
-            <div className="h-px w-16 md:w-24 bg-linear-to-l from-transparent via-green/30 to-green/30" />
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple/10 text-purple text-xs font-bold uppercase tracking-widest">
+              <span className="w-2 h-2 rounded-full bg-purple animate-pulse" />
+              100% Free Sessions
+            </div>
+
+            {/* Title */}
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-serif text-green leading-[1.1]"
+              style={{ fontFamily: "'Cormorant Garamond', 'Georgia', serif" }}
+            >
+              Awareness Programs for Schools & Communities
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-lg text-green/70 max-w-lg mx-auto lg:mx-0">
+              We conduct FREE sessions to help teachers, parents, and communities understand neurodivergence and early intervention.
+            </p>
+
+            {/* Quick Stats */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-2">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green">10+</div>
+                <div className="text-xs text-green/60 uppercase tracking-wide">Sessions Done</div>
+              </div>
+              <div className="w-px h-8 bg-green/20 hidden sm:block" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green">500+</div>
+                <div className="text-xs text-green/60 uppercase tracking-wide">People Reached</div>
+              </div>
+              <div className="w-px h-8 bg-green/20 hidden sm:block" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green">FREE</div>
+                <div className="text-xs text-green/60 uppercase tracking-wide">Always</div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="pt-4">
+              <WhatsAppConsultationLink className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-green text-white font-semibold hover:bg-green/90 transition-colors">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Host a Free Session
+              </WhatsAppConsultationLink>
+            </div>
           </motion.div>
 
-          {/* Description */}
-          <motion.p
-            className="text-base md:text-lg text-green/60 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          {/* Right: Photo */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            FREE awareness sessions across preschools, schools, colleges, and organizations.
-            <br className="hidden md:block" />
-            Join us in creating an inclusive society where every child can thrive.
-          </motion.p>
+            {/* Decorative offset */}
+            <div className="absolute inset-0 bg-yellow/20 rounded-2xl transform rotate-3 translate-x-3 translate-y-3" />
+            <div className="absolute inset-0 bg-purple/10 rounded-2xl transform -rotate-2 translate-x-1 translate-y-4" />
+
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+              <Image
+                src="/awareness-jyoti-nivas.jpeg"
+                alt="Awareness session at Jyoti Nivas College - educators learning about early intervention"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-[#FAF9F5] to-transparent" />
     </section>
   );
 }
