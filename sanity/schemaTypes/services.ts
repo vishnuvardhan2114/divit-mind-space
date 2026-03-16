@@ -58,6 +58,22 @@ export const servicesType = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'category',
+      type: 'string',
+      title: 'Category',
+      description: 'Select the service category for filtering and navigation.',
+      options: {
+        list: [
+          { title: 'Assessments', value: 'assessments' },
+          { title: 'Therapy', value: 'therapy' },
+          { title: 'Guidance', value: 'guidance' },
+          { title: 'Programs', value: 'programs' },
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'body',
       type: 'array',
       of: [

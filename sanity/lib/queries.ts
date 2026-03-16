@@ -170,6 +170,24 @@ export const ALL_SERVICES_QUERY = `*[_type == "services"] | order(popular desc, 
   description,
   popular,
   isTherapy,
+  category,
+  "image": image{
+    asset->{url},
+    alt
+  }
+}`;
+
+/**
+ * Query to fetch services by category
+ */
+export const SERVICES_BY_CATEGORY_QUERY = `*[_type == "services" && category == $category] | order(popular desc, title asc) {
+  _id,
+  title,
+  slug,
+  description,
+  popular,
+  isTherapy,
+  category,
   "image": image{
     asset->{url},
     alt
@@ -228,6 +246,7 @@ export const THERAPY_SERVICES_QUERY = `*[_type == "services" && isTherapy == tru
   description,
   popular,
   isTherapy,
+  category,
   "image": image{
     asset->{url},
     alt
