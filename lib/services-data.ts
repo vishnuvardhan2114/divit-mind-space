@@ -25,7 +25,7 @@ export const services: ServiceData[] = [
     slug: "psychometric-assessments",
     description: "Our psychometric assessments are designed to gently and accurately understand your child's learning style, strengths, and areas where they may need additional support.",
     category: "assessments",
-    image: "/gallery/gallery_pic1.png",
+    image: "/features-service-card/child-autism-assessment.png",
     content: {
       overview: "Our psychometric assessments are designed to gently and accurately understand your child's learning style, strengths, and areas where they may need additional support. These assessments help identify cognitive abilities, emotional patterns, and developmental needs to create a clear roadmap for your child's growth.",
       benefits: [
@@ -59,7 +59,7 @@ export const services: ServiceData[] = [
     slug: "psychoeducational-assessments",
     description: "Psychoeducational assessments play a pivotal role in supporting neurodivergent children — those with learning differences such as ADHD, dyslexia, or autism spectrum disorders.",
     category: "assessments",
-    image: "/gallery/gallery_pic2.png",
+    image: "/features-service-card/child-autism-assessment.png",
     content: {
       overview: "Psychoeducational assessments play a pivotal role in supporting neurodivergent children — those with learning differences such as ADHD, dyslexia, or autism spectrum disorders. These comprehensive evaluations examine both cognitive abilities and academic achievement to identify specific learning disabilities and create targeted intervention plans.",
       benefits: [
@@ -97,7 +97,7 @@ export const services: ServiceData[] = [
     slug: "speech-therapy",
     description: "Communication is one of the most important skills a child develops. When a child struggles to speak clearly, express thoughts, or understand language, it can affect their confidence, learning, and social interactions.",
     category: "therapy",
-    image: "/gallery/gallery_pic3.png",
+    image: "/features-service-card/therapy-services.png",
     content: {
       overview: "Communication is one of the most important skills a child develops. When a child struggles to speak clearly, express thoughts, or understand language, it can affect their confidence, learning, and social interactions. Our Speech Therapy services are designed to support children in developing clear communication skills in a structured, engaging, and child-friendly environment. At Divit MindSpace, we help children not just speak — but communicate with confidence.",
       benefits: [
@@ -131,7 +131,7 @@ export const services: ServiceData[] = [
     slug: "occupational-therapy",
     description: "Every child needs essential daily life skills to grow with confidence and independence. When a child struggles with motor skills, coordination, sensory processing, or routine activities, occupational therapy can help.",
     category: "therapy",
-    image: "/gallery/gallery_pic4.png",
+    image: "/features-service-card/therapy-services.png",
     content: {
       overview: "Every child needs essential daily life skills to grow with confidence and independence. When a child struggles with motor skills, coordination, sensory processing, or routine activities, it can impact their ability to participate fully in school and daily life. Our Occupational Therapy services help children develop the skills they need for everyday success through engaging, play-based activities.",
       benefits: [
@@ -165,7 +165,7 @@ export const services: ServiceData[] = [
     slug: "behavioral-therapy",
     description: "Every child expresses emotions differently. Sometimes, challenging behaviors are not defiance — but a way of communicating unmet needs, frustration, or difficulty coping.",
     category: "therapy",
-    image: "/gallery/gallery_pic5.png",
+    image: "/features-service-card/therapy-services.png",
     content: {
       overview: "Every child expresses emotions differently. Sometimes, challenging behaviors are not defiance — but a way of communicating unmet needs, frustration, or difficulty coping. Our Behavioral Therapy program is designed to help children develop positive behaviors, emotional regulation skills, and healthier responses to everyday situations. At Divit MindSpace, we focus on understanding the reason behind the behavior — not just correcting it.",
       benefits: [
@@ -199,7 +199,7 @@ export const services: ServiceData[] = [
     slug: "group-therapy-sessions",
     description: "Our Group Therapy Sessions are designed to help children develop essential social, emotional, and communication skills in a structured and supportive group setting.",
     category: "therapy",
-    image: "/gallery/gallery_pic6.png",
+    image: "/features-service-card/therapy-services.png",
     content: {
       overview: "Our Group Therapy Sessions are designed to help children develop essential social, emotional, and communication skills in a structured and supportive group setting. Children learn best when they interact with peers, and group therapy provides the perfect environment for practicing real-world social skills with guidance from trained therapists.",
       benefits: [
@@ -237,7 +237,7 @@ export const services: ServiceData[] = [
     slug: "counselling-teenagers--adults",
     description: "Adolescence is a critical stage of emotional and psychological development. Teenagers today face increasing pressure from academics, social expectations, peer influence, and digital exposure.",
     category: "guidance",
-    image: "/gallery/gallery_pic7.png",
+    image: "/features-service-card/adult-counseling.png",
     content: {
       overview: "Adolescence is a critical stage of emotional and psychological development. Teenagers today face increasing pressure from academics, social expectations, peer influence, and digital exposure. Our counselling services provide a safe, confidential space for teenagers and adults to explore their feelings, develop coping strategies, and build emotional resilience.",
       benefits: [
@@ -271,7 +271,7 @@ export const services: ServiceData[] = [
     slug: "training-program-shadow-teacher-training-program",
     description: "We believe every child deserves the right support in mainstream classrooms. Our Shadow Teacher Training Program is a comprehensive certification course designed for educators and caregivers.",
     category: "guidance",
-    image: "/gallery/gallery_pic8.png",
+    image: "/features-service-card/parent-education.png",
     content: {
       overview: "We believe every child deserves the right support in mainstream classrooms. Our Shadow Teacher Training Program is a comprehensive certification course designed for educators, special educators, and caregivers who want to effectively support neurodivergent children in school settings. This program equips participants with practical skills and strategies for inclusive education.",
       benefits: [
@@ -309,7 +309,7 @@ export const services: ServiceData[] = [
     slug: "early-intervention-program",
     description: "The early years of a child's life are critical for brain development. When developmental delays or early signs of learning differences are identified and addressed promptly, outcomes improve significantly.",
     category: "programs",
-    image: "/gallery/gallery_pic9.png",
+    image: "/about_pic1.png",
     content: {
       overview: "The early years of a child's life are critical for brain development. When developmental delays or early signs of learning differences are identified and addressed promptly, outcomes improve significantly. Our Early Intervention Program provides comprehensive support for young children (0-6 years) showing developmental concerns, helping them build a strong foundation for future learning.",
       benefits: [
@@ -343,7 +343,7 @@ export const services: ServiceData[] = [
     slug: "special-education--remedial-sessions",
     description: "Our Special Education and Remedial Sessions are designed to support children who experience learning difficulties, developmental delays, or academic challenges.",
     category: "programs",
-    image: "/gallery/gallery_pic10.png",
+    image: "/about_pic2.png",
     content: {
       overview: "Our Special Education and Remedial Sessions are designed to support children who experience learning difficulties, developmental delays, or academic challenges. Using specialized teaching methods and individualized attention, we help children build academic skills at their own pace while addressing underlying learning differences.",
       benefits: [
@@ -377,7 +377,7 @@ export const services: ServiceData[] = [
     slug: "school-readiness-program",
     description: "Starting school is a major milestone in a child's life. For many children, especially those with developmental or learning challenges, the transition can feel overwhelming.",
     category: "programs",
-    image: "/gallery/gallery_pic11.png",
+    image: "/about_pic3.png",
     content: {
       overview: "Starting school is a major milestone in a child's life. For many children, especially those with developmental or learning challenges, the transition can feel overwhelming. Our School Readiness Program prepares children for this important step by building the foundational skills they need to thrive in a classroom environment.",
       benefits: [
