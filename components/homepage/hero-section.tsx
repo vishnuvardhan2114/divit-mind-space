@@ -22,17 +22,21 @@ export function HeroSection() {
 
             <div className="flex flex-col w-full max-w-[580px] mx-auto lg:mx-0 -mt-2">
               <h1 className="flex flex-col tracking-tight text-green leading-none">
-                <span className="flex justify-between items-baseline w-full text-[clamp(0.9rem,2.2vw,1.6rem)] font-bold uppercase tracking-[0.12em] mb-3 py-1">
+                {/* Line 1: EMPOWERING EVERY CHILD'S with overlapping yellow strokes */}
+                <span className="relative flex justify-between items-baseline w-full text-[clamp(0.9rem,2.2vw,1.6rem)] font-bold uppercase tracking-[0.12em] mb-3 py-1 px-2">
+                  {/* Multiple overlapping highlight strokes */}
+                  <span className="absolute inset-0 bg-[#FFE175]/35 -z-10 rounded-sm transform -rotate-[1.5deg] scale-x-[1.08] -translate-x-0.5" />
+                  <span className="absolute inset-0 bg-[#FFE175]/40 -z-10 rounded-sm transform rotate-[0.8deg] scale-x-[1.04] translate-y-px" />
+                  <span className="absolute inset-0 bg-[#FFE175]/25 -z-20 rounded-sm transform -rotate-[0.5deg] scale-x-[1.06] scale-y-[1.15] -translate-y-px" />
                   <span>E</span><span>M</span><span>P</span><span>O</span><span>W</span><span>E</span><span>R</span><span>I</span><span>N</span><span>G</span>
                   <span className="ml-1.5">E</span><span>V</span><span>E</span><span>R</span><span>Y</span>
                   <span className="ml-1.5">C</span><span>H</span><span>I</span><span>L</span><span>D</span><span>'</span><span>S</span>
                 </span>
-                <span className="flex justify-between items-baseline w-full text-[clamp(2.2rem,7vw,4.8rem)] font-serif italic text-purple leading-[0.9] -mt-1 font-medium whitespace-nowrap">
-                  <span className="relative inline-flex">
-                    <span className="absolute inset-0 bg-[#FFE175]/50 -z-10 rounded-sm transform -rotate-1 scale-110" />
-                    <span>U</span><span>n</span><span>i</span><span>q</span><span>u</span><span>e</span>
-                  </span>
-                  <span className="ml-2">J</span><span>o</span><span>u</span><span>r</span><span>n</span><span>e</span><span>y</span><span>.</span>
+                {/* Line 2: Different (crossed out) Unique Journey */}
+                <span className="flex justify-between items-baseline w-full text-[clamp(2rem,6vw,4rem)] font-serif italic text-purple leading-[0.9] -mt-1 font-medium">
+                  <span className="relative text-[0.7em] text-gray-400/50 line-through decoration-gray-400/60 decoration-[3px] mr-1">Different</span>
+                  <span>Unique</span>
+                  <span className="ml-1">Journey.</span>
                 </span>
               </h1>
             </div>
