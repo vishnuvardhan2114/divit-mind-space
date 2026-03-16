@@ -233,11 +233,11 @@ function PersonCard({ person }: { person: Person }) {
 
 export function FoundersSpecialistsSection() {
   return (
-    <section className="py-12 lg:py-16 bg-cream" id="founders-specialists">
+    <section className="py-12 lg:py-16 bg-cream" id="specialists">
       <div className="container mx-auto px-4">
         <div className="text-2xl flex items-center justify-center gap-2 sm:text-3xl text-center lg:text-4xl font-semibold text-purple tracking-tight mb-8 lg:mb-10">
-          <Image src="/favorite_wing.svg" alt="Consultants" width={44} height={44} />
-          <span>Consultants</span>
+          <Image src="/favorite_wing.svg" alt="Specialists" width={44} height={44} />
+          <span>Our Specialists</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
           {PEOPLE.map((person) => (
