@@ -2,22 +2,146 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "motion/react";
-import { ServiceCard } from "./service-card";
+import Image from "next/image";
+import Link from "next/link";
 import { WhatsAppConsultationLink } from "@/components/whatsapp-consultation-link";
-import type { ServiceListItem } from "@/sanity/types";
 import { ClipboardCheck, Heart, Users, GraduationCap } from "lucide-react";
 
-interface ServicesPageProps {
-  services: ServiceListItem[];
-  title?: string;
+interface Service {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  category: "assessments" | "therapy" | "guidance" | "programs";
+  image: string;
 }
+
+// Hardcoded services data
+const services: Service[] = [
+  // Assessments
+  {
+    id: "1",
+    title: "Psychometric Assessment",
+    slug: "psychometric-assessment",
+    description: "Comprehensive evaluation of cognitive abilities, learning styles, and developmental milestones to understand your child's unique profile.",
+    category: "assessments",
+    image: "/services/assessment-1.jpg",
+  },
+  {
+    id: "2",
+    title: "Educational Assessment",
+    slug: "educational-assessment",
+    description: "Detailed analysis of academic strengths, learning gaps, and educational needs to create personalized learning strategies.",
+    category: "assessments",
+    image: "/services/assessment-2.jpg",
+  },
+  {
+    id: "3",
+    title: "Behavioral Assessment",
+    slug: "behavioral-assessment",
+    description: "In-depth observation and analysis of behavioral patterns to identify triggers, needs, and effective intervention strategies.",
+    category: "assessments",
+    image: "/services/assessment-3.jpg",
+  },
+  {
+    id: "4",
+    title: "Developmental Screening",
+    slug: "developmental-screening",
+    description: "Early identification of developmental delays or concerns to ensure timely intervention and support.",
+    category: "assessments",
+    image: "/services/assessment-4.jpg",
+  },
+  // Therapy
+  {
+    id: "5",
+    title: "Speech Therapy",
+    slug: "speech-therapy",
+    description: "Targeted sessions to improve communication skills, language development, and speech clarity for confident expression.",
+    category: "therapy",
+    image: "/services/therapy-1.jpg",
+  },
+  {
+    id: "6",
+    title: "Occupational Therapy",
+    slug: "occupational-therapy",
+    description: "Hands-on therapy to develop fine motor skills, sensory processing, and daily living independence.",
+    category: "therapy",
+    image: "/services/therapy-2.jpg",
+  },
+  {
+    id: "7",
+    title: "Behavior Therapy",
+    slug: "behavior-therapy",
+    description: "Evidence-based interventions to build positive behaviors, social skills, and emotional regulation.",
+    category: "therapy",
+    image: "/services/therapy-3.jpg",
+  },
+  {
+    id: "8",
+    title: "Play Therapy",
+    slug: "play-therapy",
+    description: "Child-centered therapeutic approach using play to help children express feelings and develop coping skills.",
+    category: "therapy",
+    image: "/services/therapy-4.jpg",
+  },
+  // Guidance
+  {
+    id: "9",
+    title: "Parent Counseling",
+    slug: "parent-counseling",
+    description: "One-on-one guidance sessions to help parents understand their child's needs and develop effective parenting strategies.",
+    category: "guidance",
+    image: "/services/guidance-1.jpg",
+  },
+  {
+    id: "10",
+    title: "Teacher Training",
+    slug: "teacher-training",
+    description: "Professional development for educators on inclusive practices and supporting neurodivergent students in the classroom.",
+    category: "guidance",
+    image: "/services/guidance-2.jpg",
+  },
+  {
+    id: "11",
+    title: "School Consultation",
+    slug: "school-consultation",
+    description: "Expert guidance for schools on creating inclusive environments and implementing support systems.",
+    category: "guidance",
+    image: "/services/guidance-3.jpg",
+  },
+  // Programs
+  {
+    id: "12",
+    title: "Special Education Program",
+    slug: "special-education-program",
+    description: "Structured learning program designed for children who need individualized educational approaches and support.",
+    category: "programs",
+    image: "/services/program-1.jpg",
+  },
+  {
+    id: "13",
+    title: "Social Skills Group",
+    slug: "social-skills-group",
+    description: "Small group sessions focused on building peer relationships, communication, and social confidence.",
+    category: "programs",
+    image: "/services/program-2.jpg",
+  },
+  {
+    id: "14",
+    title: "Summer Enrichment Program",
+    slug: "summer-enrichment-program",
+    description: "Engaging summer activities combining learning, therapy, and fun in a supportive group environment.",
+    category: "programs",
+    image: "/services/program-3.jpg",
+  },
+];
 
 const categories = [
   { id: "all", label: "All Services", icon: null },
-  { id: "assessments", label: "Assessments", icon: ClipboardCheck, color: "bg-green" },
-  { id: "therapy", label: "Therapy", icon: Heart, color: "bg-blue" },
-  { id: "guidance", label: "Guidance", icon: Users, color: "bg-yellow" },
-  { id: "programs", label: "Programs", icon: GraduationCap, color: "bg-purple" },
+  { id: "assessments", label: "Assessments", icon: ClipboardCheck },
+  { id: "therapy", label: "Therapy", icon: Heart },
+  { id: "guidance", label: "Guidance", icon: Users },
+  { id: "programs", label: "Programs", icon: GraduationCap },
 ];
 
 const categoryDescriptions: Record<string, string> = {
@@ -28,25 +152,26 @@ const categoryDescriptions: Record<string, string> = {
   programs: "Structured learning and development experiences",
 };
 
-export default function ServicesPage({ services, title = "Our Services" }: ServicesPageProps) {
+interface ServicesPageProps {
+  title?: string;
+}
+
+export default function ServicesPage({ title = "Our Services" }: ServicesPageProps) {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filteredServices = useMemo(() => {
     if (activeCategory === "all") return services;
-    return services.filter((s) => (s as any).category === activeCategory);
-  }, [services, activeCategory]);
+    return services.filter((s) => s.category === activeCategory);
+  }, [activeCategory]);
 
   // Count services per category
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: services.length };
     services.forEach((s) => {
-      const cat = (s as any).category;
-      if (cat) {
-        counts[cat] = (counts[cat] || 0) + 1;
-      }
+      counts[s.category] = (counts[s.category] || 0) + 1;
     });
     return counts;
-  }, [services]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FAF9F5]">
@@ -174,7 +299,7 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
             >
               {filteredServices.map((service, index) => (
                 <motion.div
-                  key={service._id}
+                  key={service.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
@@ -229,5 +354,55 @@ export default function ServicesPage({ services, title = "Our Services" }: Servi
         </div>
       </section>
     </div>
+  );
+}
+
+// Inline Service Card Component
+function ServiceCard({ service }: { service: Service }) {
+  return (
+    <Link
+      href={`/services/${service.slug}`}
+      className="group relative bg-cream overflow-hidden rounded-2xl border-2 border-transparent hover:border-green-lite transition-all duration-300 hover:shadow-xl"
+    >
+      <div className="relative h-56 w-full overflow-hidden bg-green-lite/20">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-green/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      <div className="p-6 space-y-3">
+        <h3 className="text-xl font-semibold text-green leading-tight line-clamp-2 group-hover:text-green-lite transition-colors duration-300">
+          {service.title}
+        </h3>
+
+        <p className="text-sm text-green/70 line-clamp-3 leading-relaxed">
+          {service.description}
+        </p>
+
+        <div className="pt-2 flex items-center gap-2 text-green group-hover:text-green-lite transition-colors duration-300">
+          <span className="text-sm font-medium">Learn more</span>
+          <svg
+            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div className="h-1 bg-linear-to-r from-green via-green-lite to-green transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+    </Link>
   );
 }

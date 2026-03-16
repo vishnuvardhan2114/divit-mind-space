@@ -1,95 +1,52 @@
 import type { Metadata } from "next";
 import ServicesPage from "@/components/services/services-page";
-import { sanityFetch } from "@/sanity/lib/live";
-import { ALL_SERVICES_QUERY, THERAPY_SERVICES_QUERY } from "@/sanity/lib/queries";
-import type { ServicesQueryResult } from "@/sanity/types";
 
-interface PageProps {
-  searchParams: Promise<{ therapy?: string }>;
-}
-
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const params = await searchParams;
-  const isTherapy = params.therapy === "true";
-
-  if (isTherapy) {
-    return {
-      title: "Therapy & Support | Divit MindSpace",
-      description:
-        "Therapy and support services for neurodivergent individuals and their families. Professional care tailored to your needs.",
-      openGraph: {
-        title: "Therapy & Support | Divit MindSpace",
-        description:
-          "Therapy and support services for neurodivergent individuals and their families.",
-        type: "website",
-        url: "https://divitmindspace.com/services?therapy=true",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Therapy & Support | Divit MindSpace",
-        description: "Therapy and support services for neurodivergent individuals and their families.",
-      },
-      alternates: {
-        canonical: "https://divitmindspace.com/services?therapy=true",
-      },
-    };
-  }
-
-  return {
+export const metadata: Metadata = {
+  title: "Our Services | Divit MindSpace",
+  description:
+    "Explore our comprehensive range of specialized services including educational assessments, psychometric assessments, special education sessions, and training programs for neurodivergent individuals.",
+  openGraph: {
     title: "Our Services | Divit MindSpace",
     description:
       "Explore our comprehensive range of specialized services including educational assessments, psychometric assessments, special education sessions, and training programs for neurodivergent individuals.",
-    openGraph: {
-      title: "Our Services | Divit MindSpace",
-      description:
-        "Explore our comprehensive range of specialized services including educational assessments, psychometric assessments, special education sessions, and training programs for neurodivergent individuals.",
-      type: "website",
-      url: "https://divitmindspace.com/services",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Our Services | Divit MindSpace",
-      description:
-        "Explore our comprehensive range of specialized services including educational assessments, psychometric assessments, special education sessions, and training programs for neurodivergent individuals.",
-    },
-    alternates: {
-      canonical: "https://divitmindspace.com/services",
-    },
-  };
-}
+    type: "website",
+    url: "https://divitmindspace.com/services",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Services | Divit MindSpace",
+    description:
+      "Explore our comprehensive range of specialized services including educational assessments, psychometric assessments, special education sessions, and training programs for neurodivergent individuals.",
+  },
+  alternates: {
+    canonical: "https://divitmindspace.com/services",
+  },
+};
 
-export default async function ServicesListPage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const isTherapy = params.therapy === "true";
-
-  const { data: services } = await sanityFetch({
-    query: isTherapy ? THERAPY_SERVICES_QUERY : ALL_SERVICES_QUERY,
-    tags: ["services"],
-  });
-
-  const servicesData = (services as ServicesQueryResult) || [];
-
+export default function ServicesListPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Divit MindSpace Services",
     description:
       "Comprehensive services for neurodivergent individuals including assessments, special education, and training programs.",
-    itemListElement: servicesData.map((service, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Service",
-        name: service.title,
-        description: service.description || "",
-        url: `https://divitmindspace.com/services/${service.slug.current}`,
-        provider: {
-          "@type": "Organization",
-          name: "Divit MindSpace",
-          url: "https://divitmindspace.com",
-        },
-      },
-    })),
+    numberOfItems: 14,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Psychometric Assessment" },
+      { "@type": "ListItem", position: 2, name: "Educational Assessment" },
+      { "@type": "ListItem", position: 3, name: "Behavioral Assessment" },
+      { "@type": "ListItem", position: 4, name: "Developmental Screening" },
+      { "@type": "ListItem", position: 5, name: "Speech Therapy" },
+      { "@type": "ListItem", position: 6, name: "Occupational Therapy" },
+      { "@type": "ListItem", position: 7, name: "Behavior Therapy" },
+      { "@type": "ListItem", position: 8, name: "Play Therapy" },
+      { "@type": "ListItem", position: 9, name: "Parent Counseling" },
+      { "@type": "ListItem", position: 10, name: "Teacher Training" },
+      { "@type": "ListItem", position: 11, name: "School Consultation" },
+      { "@type": "ListItem", position: 12, name: "Special Education Program" },
+      { "@type": "ListItem", position: 13, name: "Social Skills Group" },
+      { "@type": "ListItem", position: 14, name: "Summer Enrichment Program" },
+    ],
   };
 
   return (
@@ -99,7 +56,7 @@ export default async function ServicesListPage({ searchParams }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ServicesPage services={servicesData} title={isTherapy ? "Therapy & Support" : "Our Services"} />
+      <ServicesPage />
     </>
   );
 }
