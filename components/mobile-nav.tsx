@@ -1,9 +1,8 @@
-
 "use client";
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, ImageIcon, Megaphone, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -19,29 +18,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { client } from "@/sanity/lib/client";
-import { POPULAR_SERVICES_QUERY } from "@/sanity/lib/queries";
-import type { ServiceNavItem } from "@/sanity/types";
+import { services } from "@/lib/services-data";
+
+// Get first 6 services for nav (matches desktop)
+const navServices = services.slice(0, 6);
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
-  const [serviceItems, setServiceItems] = React.useState<ServiceNavItem[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    async function fetchPopularServices() {
-      try {
-        const services = await client.fetch<ServiceNavItem[]>(POPULAR_SERVICES_QUERY);
-        setServiceItems(services || []);
-      } catch (error) {
-        console.error("Error fetching popular services:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchPopularServices();
-  }, []);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -57,6 +40,7 @@ export function MobileNav() {
         </SheetHeader>
         <ScrollArea className="h-[calc(100vh-80px)]">
           <div className="flex flex-col gap-2 p-4">
+            {/* Home */}
             <Link
               href="/"
               onClick={() => setOpen(false)}
@@ -65,6 +49,7 @@ export function MobileNav() {
               Home
             </Link>
 
+            {/* About Us */}
             <Link
               href="/about-us"
               onClick={() => setOpen(false)}
@@ -74,67 +59,71 @@ export function MobileNav() {
             </Link>
 
             <Accordion type="single" collapsible className="w-full">
+              {/* Services Accordion */}
               <AccordionItem value="services" className="border-none">
                 <AccordionTrigger className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] hover:no-underline">
                   Services
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  {isLoading ? (
-                    <span className="py-2 text-sm text-gray-500">Loading services...</span>
-                  ) : serviceItems.length > 0 ? (
-                    <>
-                      {serviceItems.map((service) => (
-                        <MobileLink 
-                          key={service._id} 
-                          href={`/services/${service.slug.current}`} 
-                          setOpen={setOpen}
-                        >
-                          {service.title}
-                        </MobileLink>
-                      ))}
-                      <MobileLink href="/services" setOpen={setOpen} className="pt-2 font-semibold">
-                        View All Services →
-                      </MobileLink>
-                    </>
-                  ) : (
-                    <span className="py-2 text-sm text-gray-500">No services available</span>
-                  )}
+                  {navServices.map((service) => (
+                    <MobileLink
+                      key={service.id}
+                      href={`/services/${service.slug}`}
+                      setOpen={setOpen}
+                    >
+                      {service.title}
+                    </MobileLink>
+                  ))}
+                  <MobileLink href="/services" setOpen={setOpen} className="pt-2 font-semibold text-green">
+                    View All Services →
+                  </MobileLink>
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="more" className="border-none">
+              {/* Media Accordion */}
+              <AccordionItem value="media" className="border-none">
                 <AccordionTrigger className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] hover:no-underline">
-                  More
+                  Media
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  <div className="font-semibold text-[#2F3E33] pt-2">Opportunity</div>
-                  <MobileLink href="/careers?type=internship" setOpen={setOpen} className="pl-2">Internship</MobileLink>
-                  <MobileLink href="/careers?type=full-time" setOpen={setOpen} className="pl-2">Full-time Positions</MobileLink>
-
-                  <div className="font-semibold text-[#2F3E33] pt-2">Media</div>
-                  <MobileLink href="/blogs" setOpen={setOpen} className="pl-2">Blogs</MobileLink>
-                  <MobileLink href="/news" setOpen={setOpen} className="pl-2">News</MobileLink>
-                  <MobileLink href="/gallery" setOpen={setOpen} className="pl-2">Gallery</MobileLink>
-
-                  <MobileLink href="/affiliations" setOpen={setOpen} className="pt-2">Affiliations</MobileLink>
-                  <MobileLink href="/awareness-program" setOpen={setOpen}>Awareness Program</MobileLink>
+                  <MobileLink href="/gallery" setOpen={setOpen} icon={<ImageIcon className="h-4 w-4" />}>
+                    Gallery
+                  </MobileLink>
+                  <MobileLink href="/news" setOpen={setOpen} icon={<Megaphone className="h-4 w-4" />}>
+                    News
+                  </MobileLink>
+                  <MobileLink href="/careers" setOpen={setOpen} icon={<Briefcase className="h-4 w-4" />}>
+                    Careers
+                  </MobileLink>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
 
+            {/* Free Workshops */}
             <Link
-              href="/contact-us"
+              href="/awareness-program"
               onClick={() => setOpen(false)}
               className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
             >
-              Contact Us
+              Free Workshops
             </Link>
+
+            {/* Blogs */}
             <Link
               href="/blogs"
               onClick={() => setOpen(false)}
               className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
             >
               Blogs
+            </Link>
+
+            {/* Contact */}
+            <Link
+              href="/contact-us"
+              onClick={() => setOpen(false)}
+              className="px-4 py-2 text-lg font-medium hover:text-[#7C9082] transition-colors"
+            >
+              Contact
             </Link>
           </div>
         </ScrollArea>
@@ -143,14 +132,27 @@ export function MobileNav() {
   );
 }
 
-function MobileLink({ href, setOpen, children, className }: { href: string, setOpen: (open: boolean) => void, children: React.ReactNode, className?: string }) {
+function MobileLink({
+  href,
+  setOpen,
+  children,
+  className,
+  icon
+}: {
+  href: string;
+  setOpen: (open: boolean) => void;
+  children: React.ReactNode;
+  className?: string;
+  icon?: React.ReactNode;
+}) {
   return (
     <Link
       href={href}
       onClick={() => setOpen(false)}
-      className={`block py-1 hover:text-[#7C9082] transition-colors ${className}`}
+      className={`flex items-center gap-2 py-1 hover:text-[#7C9082] transition-colors ${className}`}
     >
+      {icon && <span className="text-gray-400">{icon}</span>}
       {children}
     </Link>
-  )
+  );
 }

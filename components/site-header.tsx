@@ -15,6 +15,7 @@ export function SiteHeader() {
                 <MainNav />
 
                 <div className="flex items-center gap-3">
+                    {/* Desktop CTA - solid */}
                     <Link
                         href="/about-us#specialists"
                         className="hidden md:inline-flex h-9 items-center justify-center gap-2 rounded-full bg-green px-4 text-sm font-semibold text-white hover:bg-[#003835] transition-colors"
@@ -26,6 +27,20 @@ export function SiteHeader() {
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                         Meet Our Specialists
+                    </Link>
+
+                    {/* Mobile CTA - outline */}
+                    <Link
+                        href="/about-us#specialists"
+                        className="md:hidden inline-flex h-9 items-center justify-center gap-1.5 rounded-full border-2 border-green px-3 text-xs font-semibold text-green hover:bg-green hover:text-white transition-colors"
+                    >
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        Our Specialists
                     </Link>
 
                     <MobileNav />
