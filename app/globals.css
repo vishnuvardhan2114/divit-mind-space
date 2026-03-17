@@ -204,9 +204,26 @@
   background-color: #FFE175 !important;
 }
 
-/* Rolling headline animation - explicit class */
-.rolling-headline-animation {
-  animation: rolling-headline 4s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+/* Rolling headline animation - exact copy from preview */
+.rolling-words {
+  display: flex;
+  flex-direction: column;
+  animation: roll-headline 6s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+.rolling-words span {
+  height: 1.2em;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.12em;
+}
+.rolling-words.fast {
+  animation-duration: 4s;
+}
+@keyframes roll-headline {
+  0%, 30% { transform: translateY(0); }
+  33.33%, 63.33% { transform: translateY(-25%); }
+  66.66%, 96.66% { transform: translateY(-50%); }
+  100% { transform: translateY(-75%); }
 }
 
 @layer utilities {
