@@ -45,9 +45,9 @@ export function HeroSection() {
             </div>
 
             <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base lg:text-lg text-green/90 leading-relaxed font-medium">
-              Professional therapy and developmental support for neurodiverse children.
-              Helping them build confidence, focus, and essential life skills
-              in a warm, expert-led environment.
+              Professional therapy and developmental support for neurodivergent children,
+              teens, adults, and their families. Building confidence, focus, and essential
+              life skills in a warm, expert-led environment.
             </p>
 
             <div className="mt-4 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">

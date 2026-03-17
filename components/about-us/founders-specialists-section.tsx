@@ -136,6 +136,22 @@ const PEOPLE: Person[] = [
       "Dinesh Jayabalakrishnan's journey is fueled by a singular goal: to promote the game of Table Tennis. He strives to teach the fundamentals of the game, coaching students to excel and supporting them to bring laurels to their institutions and training academies through competition success. His journey is a testament to the transformative power of dedication, passion, and the unyielding spirit to uplift others through sport.",
     ],
   },
+  {
+    id: "pavithra-lakshmi-narasimhan",
+    name: "Dr. Pavithra Lakshmi Narasimhan",
+    title: "PhD · Clinical Psychologist · Child & Adolescent Behaviour Intervention Specialist · Certified Art Therapist · SEN (UK certified)",
+    image: "/pavithra-lakshmi.png",
+    teaser:
+      "Clinical Psychologist, Behaviour Intervention Therapist, and Certified Art Therapist with over 18 years of experience in education, mental health counselling, and behavioural intervention. Dedicated to supporting the emotional, behavioural, and developmental well-being of children, adolescents, and families.",
+    fullBio: [
+      "Dr. Pavithra Lakshmi Narasimhan is a Clinical Psychologist, Behaviour Intervention Therapist, and Certified Art Therapist with over 18 years of experience in the fields of education, mental health counselling, and behavioural intervention. Her work is dedicated to supporting the emotional, behavioural, and developmental well-being of children, adolescents, and families.",
+      "She holds a PhD in Clinical Psychology, along with a Master's degree in Psychology and a Bachelor of Education (B.Ed.), and has specialized training in Special Educational Needs (SEN), child counselling, trauma support, and expressive art therapy.",
+      "Dr. Pavithra has extensive experience working in inclusive educational settings, providing individualized support for children with neurodivergent profiles such as ADHD, learning differences, behavioural regulation challenges, and emotional difficulties. She designs individualized behaviour intervention plans, psychological assessments, and therapeutic programs that help children build self-awareness, emotional regulation, and social confidence.",
+      "Her therapeutic approach integrates evidence-based methods including Cognitive Behavioural Therapy (CBT), Dialectical Behaviour Therapy (DBT), Mindfulness-Based Therapy (MBT), Acceptance and Commitment Therapy (ACT), Functional Communication Training (FCT), and expressive art therapy techniques.",
+      "Currently working as a Behaviour Intervention Specialist, Dr. Pavithra collaborates closely with parents, teachers, and multidisciplinary professionals to create supportive learning environments that nurture each child's unique potential.",
+      "Dr. Pavithra believes that when children feel understood and supported, they gain the confidence to grow, learn, and thrive.",
+    ],
+  },
 ];
 
 function PersonImagePlaceholder() {
