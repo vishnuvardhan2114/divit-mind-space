@@ -30,11 +30,13 @@ export function HeroSection() {
                   <span className="absolute inset-0 bg-[#FFE175]/25 -z-20 rounded-sm transform -rotate-[0.5deg] scale-x-[1.06] scale-y-[1.15] -translate-y-px" />
                   <span>E</span><span>M</span><span>P</span><span>O</span><span>W</span><span>E</span><span>R</span><span>I</span><span>N</span><span>G</span>
                   <span className="ml-1.5">E</span><span>V</span><span>E</span><span>R</span><span>Y</span>
-                  {/* Crossfade: CHILD'S → TEEN'S → ADULT'S */}
-                  <span className="ml-1.5 relative inline-flex" style={{ minWidth: '7ch' }}>
-                    <span className="absolute opacity-0 animate-[crossfade-word_9s_infinite]" style={{ animationDelay: '0s' }}>CHILD'S</span>
-                    <span className="absolute opacity-0 animate-[crossfade-word_9s_infinite]" style={{ animationDelay: '3s' }}>TEEN'S</span>
-                    <span className="absolute opacity-0 animate-[crossfade-word_9s_infinite]" style={{ animationDelay: '6s' }}>ADULT'S</span>
+                  <span className="ml-1.5 inline-flex h-[1.2em] overflow-hidden">
+                    <span className="flex flex-col animate-[rolling-headline_6s_cubic-bezier(0.4,0,0.2,1)_infinite]">
+                      <span className="h-[1.2em] flex items-center tracking-[0.12em]">CHILD'S</span>
+                      <span className="h-[1.2em] flex items-center tracking-[0.12em]">TEEN'S</span>
+                      <span className="h-[1.2em] flex items-center tracking-[0.12em]">ADULT'S</span>
+                      <span className="h-[1.2em] flex items-center tracking-[0.12em]">CHILD'S</span>
+                    </span>
                   </span>
                 </span>
                 {/* Line 2: Different (crossed out) Unique Journey */}
