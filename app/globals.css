@@ -204,6 +204,10 @@
   background-color: #FFE175 !important;
 }
 
+/* Rolling headline animation - explicit class */
+.rolling-headline-animation {
+  animation: rolling-headline 4s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
 
 @layer utilities {
   .container {
