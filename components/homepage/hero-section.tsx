@@ -8,9 +8,9 @@ export function HeroSection() {
     <>
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes roll-headline {
-          0%, 30% { transform: translateY(0); }
-          34%, 64% { transform: translateY(-25%); }
-          67%, 97% { transform: translateY(-50%); }
+          0% { transform: translateY(0); }
+          33.33% { transform: translateY(-25%); }
+          66.66% { transform: translateY(-50%); }
           100% { transform: translateY(-75%); }
         }
       `}} />
