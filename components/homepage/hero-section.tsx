@@ -5,7 +5,16 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-1 pb-8 lg:pt-2 lg:pb-10 min-h-[auto] lg:min-h-[calc(100vh-140px)] flex items-center">
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes roll-headline {
+          0%, 30% { transform: translateY(0); }
+          33.33%, 63.33% { transform: translateY(-25%); }
+          66.66%, 96.66% { transform: translateY(-50%); }
+          100% { transform: translateY(-75%); }
+        }
+      `}} />
+      <section className="relative overflow-hidden pt-1 pb-8 lg:pt-2 lg:pb-10 min-h-[auto] lg:min-h-[calc(100vh-140px)] flex items-center">
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-4">
 
@@ -157,5 +166,6 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }
