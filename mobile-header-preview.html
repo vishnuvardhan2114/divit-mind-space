@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Header CTA Preview - Divit MindSpace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2F3E33;
+      --cream: #FAF9F5;
+      --cream-dark: #F1EEE4;
+      --purple: #6B5B7A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #e5e5e5;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .preview-card {
+      max-width: 400px;
+      margin: 0 auto 30px;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .preview-label {
+      background: var(--green);
+      color: white;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Mobile Header Simulation */
+    .mobile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(250, 249, 245, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(47, 62, 51, 0.05);
+      height: 64px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: var(--green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .hamburger {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--green);
+      border-radius: 1px;
+    }
+
+    /* Icon */
+    .users-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Current - Outline (what we have now) */
+    .btn-current {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 50px;
+      border: 2px solid var(--green);
+      background: transparent;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-current:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    /* Option A: Ghost - no border, subtle hover */
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover {
+      background: rgba(47, 62, 51, 0.08);
+    }
+
+    /* Option B: Subtle fill - cream background */
+    .btn-subtle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 50px;
+      border: none;
+      background: var(--cream-dark);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-subtle:hover {
+      background: #E8E4D9;
+    }
+
+    /* Option C: Icon only */
+    .btn-icon-only {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: var(--cream-dark);
+      color: var(--green);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-icon-only:hover {
+      background: var(--green);
+      color: white;
+    }
+    .btn-icon-only .users-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Option D: Small solid */
+    .btn-solid-small {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 50px;
+      border: none;
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-solid-small:hover {
+      background: #263a2d;
+    }
+    .btn-solid-small .users-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Option E: Underline link */
+    .btn-underline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 4px 0;
+      border: none;
+      background: transparent;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: all 0.2s;
+    }
+    .btn-underline:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    /* Option F: Soft pill with icon emphasis */
+    .btn-soft-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 34px;
+      padding: 0 14px 0 10px;
+      border-radius: 50px;
+      border: 1px solid rgba(47, 62, 51, 0.15);
+      background: white;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .btn-soft-pill:hover {
+      border-color: rgba(47, 62, 51, 0.3);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .btn-soft-pill .icon-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-soft-pill .icon-circle .users-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .note {
+      background: rgba(107, 91, 122, 0.1);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #555;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+
+    .recommendation {
+      max-width: 400px;
+      margin: 30px auto 0;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      border-left: 4px solid var(--green);
+    }
+    .recommendation strong {
+      color: var(--green);
+    }
+  </style>
+</head>
+<body>
+  <h1>Mobile Header CTA Options</h1>
+  <p class="subtitle">Comparing styles for "Our Specialists" button</p>
+
+  <!-- Current -->
+  <div class="preview-card">
+    <div class="preview-label">Current - Outline Border</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-current">
+        <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Our Specialists
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Heavy border feels dated, competes with hamburger</div>
+  </div>
+
+  <!-- Option A: Ghost -->
+  <div class="preview-card">
+    <div class="preview-label">Option A - Ghost (No Border)</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-ghost">
+        <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Our Specialists
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Minimal, clean - might be too subtle</div>
+  </div>
+
+  <!-- Option B: Subtle Fill -->
+  <div class="preview-card">
+    <div class="preview-label">Option B - Subtle Cream Fill</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-subtle">
+        <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Our Specialists
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Warm, soft - fits "Linen & Ink" aesthetic</div>
+  </div>
+
+  <!-- Option C: Icon Only -->
+  <div class="preview-card">
+    <div class="preview-label">Option C - Icon Only</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-icon-only">
+        <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Ultra-clean, but loses context without text</div>
+  </div>
+
+  <!-- Option D: Small Solid -->
+  <div class="preview-card">
+    <div class="preview-label">Option D - Small Solid Green</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-solid-small">
+        <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Our Specialists
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Bold CTA, but might compete with hamburger</div>
+  </div>
+
+  <!-- Option E: Underline Link -->
+  <div class="preview-card">
+    <div class="preview-label">Option E - Underline Link</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-underline">
+        <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        Our Specialists
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Editorial feel, but might look like nav link</div>
+  </div>
+
+  <!-- Option F: Soft Pill -->
+  <div class="preview-card">
+    <div class="preview-label">Option F - Soft Pill with Icon Circle</div>
+    <div class="mobile-header">
+      <div class="logo">DM</div>
+      <a href="#" class="btn-soft-pill">
+        <span class="icon-circle">
+          <svg class="users-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </span>
+        Our Specialists
+      </a>
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="note">Premium feel, subtle shadow, thin border</div>
+  </div>
+
+  <div class="recommendation">
+    <strong>My pick:</strong> Option B (Subtle Cream Fill) or Option F (Soft Pill) - both feel premium without heavy borders, and fit your warm "Linen & Ink" aesthetic.
+  </div>
+
+</body>
+</html>

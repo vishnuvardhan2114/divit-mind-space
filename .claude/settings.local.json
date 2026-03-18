@@ -18,7 +18,10 @@
       "Bash(copy:*)",
       "Bash(cmd /c copy:*)",
       "Bash(cmd /c dir \"D:\\\\plus_ev_code_base\\\\divit-mind-space\\\\public\\\\child_development_journey_roadmap.png\")",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(python:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)"
     ]
   }
 }

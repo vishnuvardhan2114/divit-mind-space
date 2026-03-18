@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Styling Preview - Divit MindSpace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #2F3E33;
+      --cream: #FAF9F5;
+      --purple: #6B5B7A;
+      --yellow: #D4A853;
+      --gold: #C9A962;
+      --ivory: #FFFEF9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--cream);
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--green);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(47, 62, 51, 0.1);
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .button-label {
+      font-size: 14px;
+      color: #666;
+      min-width: 120px;
+    }
+
+    /* Base button styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 2px solid transparent;
+    }
+
+    /* Current - Solid Green */
+    .btn-current {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+    .btn-current:hover {
+      background: #003835;
+      border-color: #003835;
+    }
+
+    /* Option B - Cream/Ivory with Green text */
+    .btn-option-b {
+      background: var(--ivory);
+      color: var(--green);
+      border-color: var(--green);
+    }
+    .btn-option-b:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    /* Option B Alt - Warm cream with subtle shadow */
+    .btn-option-b-alt {
+      background: linear-gradient(135deg, #FFFEF9 0%, #F5F0E6 100%);
+      color: var(--green);
+      border-color: rgba(47, 62, 51, 0.2);
+      box-shadow: 0 4px 15px rgba(47, 62, 51, 0.1);
+    }
+    .btn-option-b-alt:hover {
+      border-color: var(--green);
+      box-shadow: 0 6px 20px rgba(47, 62, 51, 0.15);
+    }
+
+    /* Option D - Green with Gold border */
+    .btn-option-d {
+      background: var(--green);
+      color: white;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--green), 0 4px 15px rgba(201, 169, 98, 0.3);
+    }
+    .btn-option-d:hover {
+      box-shadow: 0 0 0 1px var(--green), 0 6px 25px rgba(201, 169, 98, 0.4);
+    }
+
+    /* Option D Alt - Gold accent glow */
+    .btn-option-d-alt {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+      box-shadow: 0 4px 20px rgba(201, 169, 98, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .btn-option-d-alt:hover {
+      box-shadow: 0 6px 30px rgba(201, 169, 98, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    /* REFINED: Softer warm glow - less intense, more elegant */
+    .btn-refined-1 {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+      box-shadow: 0 4px 16px rgba(201, 169, 98, 0.25), 0 2px 6px rgba(47, 62, 51, 0.15);
+    }
+    .btn-refined-1:hover {
+      box-shadow: 0 6px 24px rgba(201, 169, 98, 0.35), 0 3px 8px rgba(47, 62, 51, 0.15);
+      transform: translateY(-1px);
+    }
+
+    /* REFINED: Gold rim + soft glow - premium definition */
+    .btn-refined-2 {
+      background: var(--green);
+      color: white;
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      box-shadow: 0 4px 18px rgba(201, 169, 98, 0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .btn-refined-2:hover {
+      border-color: rgba(201, 169, 98, 0.5);
+      box-shadow: 0 6px 25px rgba(201, 169, 98, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    /* REFINED: Warm bottom glow only - grounded, premium */
+    .btn-refined-3 {
+      background: linear-gradient(180deg, #364439 0%, var(--green) 100%);
+      color: white;
+      border-color: var(--green);
+      box-shadow: 0 6px 20px -4px rgba(201, 169, 98, 0.5), 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .btn-refined-3:hover {
+      box-shadow: 0 8px 28px -4px rgba(201, 169, 98, 0.6), 0 3px 6px rgba(0,0,0,0.1);
+      transform: translateY(-1px);
+    }
+
+    /* REFINED: Minimal elegance - subtle inner light */
+    .btn-refined-4 {
+      background: linear-gradient(180deg, #3a4a3e 0%, var(--green) 50%, #2a362d 100%);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(201, 169, 98, 0.2), 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .btn-refined-4:hover {
+      box-shadow: 0 6px 22px rgba(201, 169, 98, 0.3), 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Option D Alt 2 - Subtle gold underline */
+    .btn-option-d-alt2 {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+      position: relative;
+    }
+    .btn-option-d-alt2::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 20%;
+      right: 20%;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* Bonus - Purple accent */
+    .btn-purple {
+      background: var(--purple);
+      color: white;
+      border-color: var(--purple);
+    }
+    .btn-purple:hover {
+      background: #5a4a68;
+    }
+
+    /* Bonus - Gradient */
+    .btn-gradient {
+      background: linear-gradient(135deg, var(--green) 0%, var(--purple) 100%);
+      color: white;
+      border-color: transparent;
+    }
+    .btn-gradient:hover {
+      background: linear-gradient(135deg, #263329 0%, #5a4a68 100%);
+    }
+
+    /* Header simulation */
+    .header-sim {
+      background: rgba(250, 249, 245, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 15px 30px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border: 1px solid rgba(47, 62, 51, 0.05);
+    }
+
+    .logo-placeholder {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--green);
+    }
+
+    .header-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    /* Hero simulation */
+    .hero-sim {
+      background: var(--cream);
+      padding: 60px 40px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .comparison-card {
+      border: 1px solid rgba(47, 62, 51, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .comparison-label {
+      background: var(--green);
+      color: white;
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .note {
+      background: rgba(107, 91, 122, 0.1);
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Button Styling Options - Premium Look</h1>
+
+  <!-- Individual Button Styles -->
+  <div class="section">
+    <h2>All Button Variations</h2>
+
+    <div class="button-row">
+      <span class="button-label">Current:</span>
+      <button class="btn btn-current">Book a Free Consultation</button>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Option B:</span>
+      <button class="btn btn-option-b">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Cream bg, green text, green border</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Option B (alt):</span>
+      <button class="btn btn-option-b-alt">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Warm gradient, subtle shadow</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Option D:</span>
+      <button class="btn btn-option-d">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Green bg, gold border</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Option D (alt):</span>
+      <button class="btn btn-option-d-alt">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Green bg, gold glow shadow</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Refined 1:</span>
+      <button class="btn btn-refined-1">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Softer warm glow, more elegant</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Refined 2:</span>
+      <button class="btn btn-refined-2">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Gold rim + soft glow</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Refined 3:</span>
+      <button class="btn btn-refined-3">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Bottom glow, grounded feel</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Refined 4:</span>
+      <button class="btn btn-refined-4">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Subtle gradient, minimal elegance</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Option D (alt 2):</span>
+      <button class="btn btn-option-d-alt2">Book a Free Consultation</button>
+      <span style="color:#888; font-size:13px;">Green bg, gold underline accent</span>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Bonus - Purple:</span>
+      <button class="btn btn-purple">Book a Free Consultation</button>
+    </div>
+
+    <div class="button-row">
+      <span class="button-label">Bonus - Gradient:</span>
+      <button class="btn btn-gradient">Book a Free Consultation</button>
+    </div>
+  </div>
+
+  <!-- Side by Side Comparisons -->
+  <div class="section">
+    <h2>In Context: Header + Hero Combinations</h2>
+
+    <div class="comparison-grid">
+      <!-- Current -->
+      <div class="comparison-card">
+        <div class="comparison-label">CURRENT (Both Green)</div>
+        <div class="header-sim">
+          <span class="logo-placeholder">Divit MindSpace</span>
+          <button class="btn btn-current header-btn">Meet Our Specialists</button>
+        </div>
+        <div class="hero-sim">
+          <h3 class="hero-title">Empowering Every Child</h3>
+          <p class="hero-subtitle">Expert therapy and support for your child's unique journey</p>
+          <button class="btn btn-current">Book a Free Consultation</button>
+        </div>
+      </div>
+
+      <!-- Option B -->
+      <div class="comparison-card">
+        <div class="comparison-label">OPTION B: Cream Hero + Green Header</div>
+        <div class="header-sim">
+          <span class="logo-placeholder">Divit MindSpace</span>
+          <button class="btn btn-current header-btn">Meet Our Specialists</button>
+        </div>
+        <div class="hero-sim">
+          <h3 class="hero-title">Empowering Every Child</h3>
+          <p class="hero-subtitle">Expert therapy and support for your child's unique journey</p>
+          <button class="btn btn-option-b">Book a Free Consultation</button>
+        </div>
+      </div>
+
+      <!-- Option B Alt -->
+      <div class="comparison-card">
+        <div class="comparison-label">OPTION B ALT: Warm Cream with Shadow</div>
+        <div class="header-sim">
+          <span class="logo-placeholder">Divit MindSpace</span>
+          <button class="btn btn-current header-btn">Meet Our Specialists</button>
+        </div>
+        <div class="hero-sim">
+          <h3 class="hero-title">Empowering Every Child</h3>
+          <p class="hero-subtitle">Expert therapy and support for your child's unique journey</p>
+          <button class="btn btn-option-b-alt">Book a Free Consultation</button>
+        </div>
+      </div>
+
+      <!-- Option D -->
+      <div class="comparison-card">
+        <div class="comparison-label">OPTION D: Green + Gold Border</div>
+        <div class="header-sim">
+          <span class="logo-placeholder">Divit MindSpace</span>
+          <button class="btn btn-current header-btn">Meet Our Specialists</button>
+        </div>
+        <div class="hero-sim">
+          <h3 class="hero-title">Empowering Every Child</h3>
+          <p class="hero-subtitle">Expert therapy and support for your child's unique journey</p>
+          <button class="btn btn-option-d">Book a Free Consultation</button>
+        </div>
+      </div>
+
+      <!-- Option D Alt -->
+      <div class="comparison-card">
+        <div class="comparison-label">OPTION D ALT: Green + Gold Glow</div>
+        <div class="header-sim">
+          <span class="logo-placeholder">Divit MindSpace</span>
+          <button class="btn btn-current header-btn">Meet Our Specialists</button>
+        </div>
+        <div class="hero-sim">
+          <h3 class="hero-title">Empowering Every Child</h3>
+          <p class="hero-subtitle">Expert therapy and support for your child's unique journey</p>
+          <button class="btn btn-option-d-alt">Book a Free Consultation</button>
+        </div>
+      </div>
+
+      <!-- Gradient -->
+      <div class="comparison-card">
+        <div class="comparison-label">BONUS: Gradient (Green → Purple)</div>
+        <div class="header-sim">
+          <span class="logo-placeholder">Divit MindSpace</span>
+          <button class="btn btn-current header-btn">Meet Our Specialists</button>
+        </div>
+        <div class="hero-sim">
+          <h3 class="hero-title">Empowering Every Child</h3>
+          <p class="hero-subtitle">Expert therapy and support for your child's unique journey</p>
+          <button class="btn btn-gradient">Book a Free Consultation</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Tip:</strong> Hover over buttons to see their hover states. The best premium feel often comes from subtle differences - the header and hero buttons shouldn't compete, but complement each other.
+    </div>
+  </div>
+
+  <!-- Button Pairs: Primary + Secondary -->
+  <div class="section">
+    <h2>Primary + Secondary Button Pairs (As They Appear in Hero)</h2>
+    <p style="color:#666; margin-bottom:30px; font-size:14px;">See how the main CTA looks alongside "Host a Free Workshop" link</p>
+
+    <style>
+      .btn-pair {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 30px;
+        background: var(--cream);
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+      .btn-pair-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--green);
+        margin-bottom: 8px;
+      }
+      .secondary-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--green);
+        text-decoration: none;
+      }
+      .secondary-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    </style>
+
+    <div class="btn-pair-label">Current (Both green shadow)</div>
+    <div class="btn-pair">
+      <button class="btn btn-current">Book a Free Consultation</button>
+      <a href="#" class="secondary-link">Host a Free Workshop <span>→</span></a>
+    </div>
+
+    <div class="btn-pair-label">Option D Alt (Gold glow - original)</div>
+    <div class="btn-pair">
+      <button class="btn btn-option-d-alt">Book a Free Consultation</button>
+      <a href="#" class="secondary-link">Host a Free Workshop <span>→</span></a>
+    </div>
+
+    <div class="btn-pair-label">Refined 1: Softer warm glow</div>
+    <div class="btn-pair">
+      <button class="btn btn-refined-1">Book a Free Consultation</button>
+      <a href="#" class="secondary-link">Host a Free Workshop <span>→</span></a>
+    </div>
+
+    <div class="btn-pair-label">Refined 2: Gold rim + soft glow</div>
+    <div class="btn-pair">
+      <button class="btn btn-refined-2">Book a Free Consultation</button>
+      <a href="#" class="secondary-link">Host a Free Workshop <span>→</span></a>
+    </div>
+
+    <div class="btn-pair-label">Refined 3: Bottom glow, grounded</div>
+    <div class="btn-pair">
+      <button class="btn btn-refined-3">Book a Free Consultation</button>
+      <a href="#" class="secondary-link">Host a Free Workshop <span>→</span></a>
+    </div>
+
+    <div class="btn-pair-label">Refined 4: Minimal elegance</div>
+    <div class="btn-pair">
+      <button class="btn btn-refined-4">Book a Free Consultation</button>
+      <a href="#" class="secondary-link">Host a Free Workshop <span>→</span></a>
+    </div>
+
+    <div class="note">
+      <strong>My Pick:</strong> <em>Refined 1</em> or <em>Refined 3</em> - they add warmth without overwhelming the secondary link. The glow is noticeable but not distracting.
+    </div>
+  </div>
+</body>
+</html>

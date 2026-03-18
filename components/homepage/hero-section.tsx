@@ -5,36 +5,6 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        .rolling-word-container {
-          display: inline-flex;
-          height: 1.2em;
-          overflow: hidden;
-          margin-left: 0.375rem;
-          transform: translateY(0.30em);
-        }
-        .rolling-words {
-          display: flex;
-          flex-direction: column;
-          animation: roll-headline 6s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-        }
-        .rolling-words span {
-          height: 1.2em;
-          display: flex;
-          align-items: center;
-          letter-spacing: 0.12em;
-        }
-        .rolling-words.fast {
-          animation-duration: 4s;
-        }
-        @keyframes roll-headline {
-          0%, 30% { transform: translateY(0); }
-          33.33%, 63.33% { transform: translateY(-25%); }
-          66.66%, 96.66% { transform: translateY(-50%); }
-          100% { transform: translateY(-75%); }
-        }
-      `}} />
       <section className="relative overflow-hidden pt-1 pb-8 lg:pt-2 lg:pb-10 min-h-[auto] lg:min-h-[calc(100vh-140px)] flex items-center">
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-4">
@@ -61,7 +31,7 @@ export function HeroSection() {
                   <span>E</span><span>M</span><span>P</span><span>O</span><span>W</span><span>E</span><span>R</span><span>I</span><span>N</span><span>G</span>
                   <span className="ml-1.5">E</span><span>V</span><span>E</span><span>R</span><span>Y</span>
                   <span className="rolling-word-container">
-                    <span className="rolling-words" style={{ animationDuration: '4s' }}>
+                    <span className="rolling-words">
                       <span>CHILD'S</span>
                       <span>TEEN'S</span>
                       <span>ADULT'S</span>
@@ -173,6 +143,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-    </>
   );
 }
