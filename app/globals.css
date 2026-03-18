@@ -75,10 +75,10 @@
   36%, 100% { opacity: 0; transform: translateY(-4px); }
 }
 @keyframes roll-headline {
-  0%, 30% { transform: translateY(-0.1em); }
-  33.33%, 63.33% { transform: translateY(-1.2em); }
-  66.66%, 96.66% { transform: translateY(-2.4em); }
-  100% { transform: translateY(-3.6em); }
+  0%, 30% { transform: translateY(-0.15em); }
+  33.33%, 63.33% { transform: translateY(-1.35em); }
+  66.66%, 96.66% { transform: translateY(-2.55em); }
+  100% { transform: translateY(-3.75em); }
 }
 
 /* Rolling headline for hero section */
