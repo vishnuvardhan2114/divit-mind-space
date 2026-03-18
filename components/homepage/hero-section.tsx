@@ -30,7 +30,13 @@ export function HeroSection() {
                   <span className="absolute inset-0 bg-[#FFE175]/25 -z-20 rounded-sm transform -rotate-[0.5deg] scale-x-[1.06] scale-y-[1.15] -translate-y-px" />
                   <span>E</span><span>M</span><span>P</span><span>O</span><span>W</span><span>E</span><span>R</span><span>I</span><span>N</span><span>G</span>
                   <span className="ml-1.5">E</span><span>V</span><span>E</span><span>R</span><span>Y</span>
-                  <span className="ml-1.5">C</span><span>H</span><span>I</span><span>L</span><span>D</span><span>'</span><span>S</span>
+                  {/* Rolling audience: CHILD'S → TEEN'S → ADULT'S → FAMILY'S */}
+                  <span className="ml-1.5 relative inline-flex">
+                    <span className="animate-hero-crossfade" style={{ animationDelay: '0s' }}>CHILD'S</span>
+                    <span className="absolute left-0 animate-hero-crossfade" style={{ animationDelay: '2s' }}>TEEN'S</span>
+                    <span className="absolute left-0 animate-hero-crossfade" style={{ animationDelay: '4s' }}>ADULT'S</span>
+                    <span className="absolute left-0 animate-hero-crossfade" style={{ animationDelay: '6s' }}>FAMILY'S</span>
+                  </span>
                 </span>
                 {/* Line 2: Different (crossed out) Unique Journey */}
                 <span className="flex items-baseline gap-3 sm:gap-4 text-[clamp(2rem,6vw,4rem)] font-[family-name:var(--font-cormorant)] italic text-purple leading-[0.9] -mt-1 font-medium">
