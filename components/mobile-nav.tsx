@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, ImageIcon, Megaphone, Briefcase } from "lucide-react";
+import { Menu, ImageIcon, Megaphone, Briefcase, FileText, Heart, Users, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -18,10 +18,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { services } from "@/lib/services-data";
-
-// Get first 6 services for nav (matches desktop)
-const navServices = services.slice(0, 6);
+// 4 main service groups for mobile nav
+const serviceGroups = [
+  { label: "Assessments", href: "/services#assessments", icon: FileText },
+  { label: "Therapy", href: "/services#therapy", icon: Heart },
+  { label: "Guidance", href: "/services#guidance", icon: Users },
+  { label: "Programs", href: "/services#programs", icon: GraduationCap },
+];
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -65,13 +68,14 @@ export function MobileNav() {
                   Services
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-4 text-base text-gray-600">
-                  {navServices.map((service) => (
+                  {serviceGroups.map((group) => (
                     <MobileLink
-                      key={service.id}
-                      href={`/services/${service.slug}`}
+                      key={group.label}
+                      href={group.href}
                       setOpen={setOpen}
+                      icon={<group.icon className="h-4 w-4" />}
                     >
-                      {service.title}
+                      {group.label}
                     </MobileLink>
                   ))}
                   <MobileLink href="/services" setOpen={setOpen} className="pt-2 font-semibold text-green">
