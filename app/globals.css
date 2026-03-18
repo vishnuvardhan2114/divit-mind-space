@@ -49,7 +49,6 @@
   --animate-marquee: marquee var(--duration, 40s) linear infinite;
   --animate-marquee-vertical: marquee-vertical var(--duration, 40s) linear infinite;
   --animate-rolling-text: rolling-text 10s cubic-bezier(0.76, 0, 0.24, 1) infinite;
-  --animate-rolling-headline: rolling-headline 4s cubic-bezier(0.76, 0, 0.24, 1) infinite;
   --animate-crossfade-word: crossfade-word 9s infinite;
 }
 
@@ -69,12 +68,6 @@
   60% { transform: translateY(-60%); }
   80% { transform: translateY(-80%); }
   100% { transform: translateY(-100%); }
-}
-@keyframes rolling-headline {
-  0%, 30% { transform: translateY(0); }
-  33.33%, 63.33% { transform: translateY(-25%); }
-  66.66%, 96.66% { transform: translateY(-50%); }
-  100% { transform: translateY(-75%); }
 }
 @keyframes crossfade-word {
   0% { opacity: 0; transform: translateY(4px); }
@@ -204,34 +197,6 @@
   background-color: #FFE175 !important;
 }
 
-/* Rolling headline animation - exact copy from preview */
-.rolling-word-container {
-  display: inline-flex !important;
-  height: 1.2em !important;
-  overflow: hidden !important;
-  margin-left: 0.375rem !important;
-  transform: translateY(0.30em) !important;
-}
-.rolling-words {
-  display: flex !important;
-  flex-direction: column !important;
-  animation: roll-headline 6s cubic-bezier(0.76, 0, 0.24, 1) infinite !important;
-}
-.rolling-words span {
-  height: 1.2em !important;
-  display: flex !important;
-  align-items: center !important;
-  letter-spacing: 0.12em !important;
-}
-.rolling-words.fast {
-  animation-duration: 4s !important;
-}
-@keyframes roll-headline {
-  0%, 30% { transform: translateY(0); }
-  33.33%, 63.33% { transform: translateY(-25%); }
-  66.66%, 96.66% { transform: translateY(-50%); }
-  100% { transform: translateY(-75%); }
-}
 
 @layer utilities {
   .container {
