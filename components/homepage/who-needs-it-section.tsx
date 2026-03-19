@@ -4,7 +4,7 @@ const items = [
     {
         id: "families",
         title: "Families",
-        description: "Understand your child's needs and get strategies that actually work at home.",
+        description: "Understand what's going on and learn how to help at home.",
         icon: Users,
         dark: false,
     },
