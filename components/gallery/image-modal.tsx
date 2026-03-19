@@ -43,7 +43,7 @@ export function ImageModal({ stories, currentIndex, onClose, onNavigate }: Image
   }, [onClose, handlePrevious, handleNext]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -56,10 +56,18 @@ export function ImageModal({ stories, currentIndex, onClose, onNavigate }: Image
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-6xl bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]"
+        className="relative w-full max-w-6xl bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row h-full max-h-[92vh] md:max-h-[85vh]"
       >
+        {/* Close Button - Fixed Top Right */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-[110] p-2 bg-white/10 hover:bg-white/20 text-white md:text-green/40 md:hover:text-green backdrop-blur-sm rounded-full transition-colors md:bg-transparent"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
         {/* Image Side */}
-        <div className="relative flex-1 bg-black/5 flex items-center justify-center min-h-[300px] md:min-h-0">
+        <div className="relative h-[45%] md:h-auto md:flex-1 bg-black/5 flex items-center justify-center overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStory.id}
@@ -72,7 +80,7 @@ export function ImageModal({ stories, currentIndex, onClose, onNavigate }: Image
                 src={currentStory.src}
                 alt={currentStory.title}
                 fill
-                className="object-contain p-4"
+                className="object-contain p-2 md:p-4"
                 priority
               />
             </motion.div>
@@ -81,31 +89,25 @@ export function ImageModal({ stories, currentIndex, onClose, onNavigate }: Image
           {/* Navigation Controls Overlay */}
           <button
             onClick={handlePrevious}
-            className="absolute left-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all border border-white/20 z-10"
+            className="absolute left-4 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all border border-white/20 z-10"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all border border-white/20 z-10"
+            className="absolute right-4 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all border border-white/20 z-10"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
 
         {/* Content Side */}
-        <div className="w-full md:w-[400px] bg-[#FDFBF7] p-8 md:p-10 flex flex-col justify-between">
-          <div>
-            <div className="flex justify-between items-start mb-8">
-              <span className="px-3 py-1 bg-green/10 text-green text-[10px] font-bold uppercase tracking-[0.2em] rounded-full">
+        <div className="flex-1 md:w-[400px] md:flex-none bg-[#FDFBF7] flex flex-col h-[55%] md:h-auto overflow-hidden">
+          <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
+            <div className="mb-4 md:mb-8">
+              <span className="px-3 py-1 bg-green/10 text-green text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] rounded-full">
                 {currentStory.category}
               </span>
-              <button
-                onClick={onClose}
-                className="p-2 -mt-2 -mr-2 text-green/40 hover:text-green transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
             </div>
 
             <AnimatePresence mode="wait">
@@ -115,26 +117,24 @@ export function ImageModal({ stories, currentIndex, onClose, onNavigate }: Image
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
               >
-                <h2 className="text-3xl font-bold text-green mb-4 font-[family-name:var(--font-cormorant)] italic leading-tight">
+                <h2 className="text-2xl md:text-3xl font-bold text-green mb-3 md:mb-4 font-[family-name:var(--font-cormorant)] italic leading-tight">
                   {currentStory.title}
                 </h2>
-                <div className="w-12 h-1 bg-yellow-400 mb-6" />
-                <p className="text-green/80 text-lg leading-relaxed font-medium">
+                <div className="w-10 h-1 bg-yellow-400 mb-4 md:mb-6" />
+                <p className="text-green/80 text-base md:text-lg leading-relaxed font-medium">
                   {currentStory.story}
                 </p>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="mt-12 flex items-center justify-between border-t border-green/5 pt-6">
-            <span className="text-xs text-green/40 font-semibold tracking-widest">
-              DIVIT MINDSPACE
-            </span>
+          {/* Optimized Footer - Centered and Clean */}
+          <div className="shrink-0 p-5 md:p-8 bg-[#FDFBF7] border-t border-green/5">
             <button 
                 onClick={handleWhatsAppShare}
-                className="flex items-center gap-2 text-xs font-bold text-green hover:text-[#25D366] transition-colors"
+                className="w-full flex items-center justify-center gap-3 py-3 rounded-full bg-[#25D366] text-white text-sm font-bold shadow-lg shadow-[#25D366]/20 hover:bg-[#20ba56] transition-all group"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
               SHARE VIA WHATSAPP
             </button>
           </div>
