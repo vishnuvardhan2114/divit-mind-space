@@ -406,7 +406,7 @@ export const services: ServiceData[] = [
     title: "Training Program (Shadow Teacher Training)",
     slug: "training-program-shadow-teacher-training-program",
     description: "We believe every child deserves the right support in mainstream classrooms. Our Shadow Teacher Training Program is a comprehensive certification course designed for educators and caregivers.",
-    category: "guidance",
+    category: "programs",
     image: "/features-service-card/parent-education.png",
     content: {
       overview: "We believe every child deserves the right support in mainstream classrooms. Our Shadow Teacher Training Program is a comprehensive certification course designed for educators, special educators, and caregivers who want to effectively support neurodivergent children in school settings. This program equips participants with practical skills and strategies for inclusive education.",

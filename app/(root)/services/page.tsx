@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ServicesPage from "@/components/services/services-page";
 
 export const metadata: Metadata = {
@@ -56,7 +57,9 @@ export default function ServicesListPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <ServicesPage />
+      <Suspense fallback={<div className="min-h-screen bg-[#FAF9F5]" />}>
+        <ServicesPage />
+      </Suspense>
     </>
   );
 }

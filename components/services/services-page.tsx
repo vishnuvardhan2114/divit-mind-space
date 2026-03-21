@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,7 +30,16 @@ interface ServicesPageProps {
 }
 
 export default function ServicesPage({ title = "Our Services" }: ServicesPageProps) {
+  const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState("all");
+
+  // Read category from URL on mount
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    if (categoryParam && categories.some((c) => c.id === categoryParam)) {
+      setActiveCategory(categoryParam);
+    }
+  }, [searchParams]);
 
   const filteredServices = useMemo(() => {
     if (activeCategory === "all") return services;
