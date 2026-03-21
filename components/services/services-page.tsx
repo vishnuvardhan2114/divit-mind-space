@@ -58,7 +58,7 @@ export default function ServicesPage({ title = "Our Services" }: ServicesPagePro
   return (
     <div className="min-h-screen bg-[#FAF9F5]">
       {/* Hero Section */}
-      <section className="py-12 lg:py-16 bg-[#FAF9F5]">
+      <section className="py-8 lg:py-12 bg-[#FAF9F5]">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             {/* Badge */}
@@ -84,7 +84,7 @@ export default function ServicesPage({ title = "Our Services" }: ServicesPagePro
 
             {/* Description */}
             <motion.p
-              className="text-lg text-green/70 mb-8 max-w-2xl mx-auto"
+              className="text-lg text-green/70 mb-6 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -94,7 +94,7 @@ export default function ServicesPage({ title = "Our Services" }: ServicesPagePro
 
             {/* Quick Stats */}
             <motion.div
-              className="flex flex-wrap items-center justify-center gap-6 mb-8"
+              className="flex flex-wrap items-center justify-center gap-6 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -170,7 +170,7 @@ export default function ServicesPage({ title = "Our Services" }: ServicesPagePro
       </section>
 
       {/* Services Grid */}
-      <section className="py-12 lg:py-16 bg-[#FAF9F5]">
+      <section className="py-8 lg:py-10 bg-[#FAF9F5]">
         <div className="container mx-auto px-4">
           {filteredServices.length > 0 ? (
             <motion.div
@@ -209,7 +209,7 @@ export default function ServicesPage({ title = "Our Services" }: ServicesPagePro
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-12 lg:py-16 bg-cream">
+      <section className="py-8 lg:py-10 bg-cream">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-2xl mx-auto text-center bg-white rounded-2xl p-8 lg:p-10 border border-green/10 shadow-sm"
